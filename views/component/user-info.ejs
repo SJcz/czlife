@@ -1,0 +1,29 @@
+<div>
+	<h3 class='page-header czlife-margin-bottom-20'>用户信息</h3>
+	<img src='/<%- user.avatar %>' class='img-responsive img-circle center-block' style='height: 100px;margin-bottom: 20px' 
+	alt='Responsive image'>
+
+	<table class='table' >
+		<tr class='czlife-no-top-border'>
+			<td>用户名</td>
+			<td><%- user.name %></td>
+		</tr>
+		<tr class='czlife-no-top-border'>
+			<td>昵称</td>
+			<td><%- user.nickname %></td>
+		</tr>
+		<tr class='czlife-no-top-border'>
+			<td>性别</td>
+			<td><%- user.gender == 'm' ? '男' : (user.gender == 'f' ? '女' : '外星人')  %></td>
+		</tr>
+		<tr class='czlife-no-top-border'>
+			<td>积分</td>
+			<td><%- user.score %></td>
+		</tr>
+		<tr class='czlife-no-top-border'>
+			<td>个人简介</td>
+			<td><%- user.bio %></td>
+		</tr>
+	</table>
+</div>
+

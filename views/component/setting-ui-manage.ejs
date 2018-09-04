@@ -1,0 +1,93 @@
+<div>
+	<h3 class='page-header czlife-margin-bottom-20'>界面风格</h3>
+		<div>
+			<table class='table'>
+				<tr class='czlife-no-top-border'>
+					<td><div class='radio'>导航栏和底部区域颜色</div></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="navRadio" <%- userStyle.nav == 'default' ? 'checked' : '' %> 
+							value='default' >原始灰</label>
+					</div></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="navRadio" 
+							<%- (userStyle.nav == 'inverse' || !userStyle.nav) ? 'checked' : '' %> 
+							value='inverse' >反色黑</label>
+					</div></td>
+	
+				</tr>
+				<tr>
+					<td><div class='radio'>背景色</div></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="backRadio" 
+							<%- (userStyle.back == '#f8f8f8' || !userStyle.back) ? 'checked' : '' %> 
+							value='#f8f8f8' >原始灰</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="backRadio" <%- userStyle.back == '#88ada6' ? 'checked' : '' %> 
+								value='#88ada6'>水色</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="backRadio" <%- userStyle.back == '#efefda' ? 'checked' : '' %> 
+								value='#efefda'>秋香黄</label>
+					</div></td>
+				</tr>
+				<tr class='czlife-no-top-border'>
+					<td></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="backRadio" <%- userStyle.back == '#e8e8ff' ? 'checked' : '' %> 
+							value='#e8e8ff'>丁香紫</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="backRadio" <%- userStyle.back == '#f1fafa' ? 'checked' : '' %>  
+								value='#f1fafa'>月牙白</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="backRadio"  <%- userStyle.back == '#fff' ? 'checked' : '' %> 
+								value='#fff' >极简白</label>
+					</div></td>
+				</tr>
+
+				<tr>
+					<td><div class='radio'>面板主题(比如列表, 榜单等等)</div></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="panelRadio" 
+							<%- (userStyle.panel == 'default' || !userStyle.panel) ? 'checked' : '' %> 
+							value='default'>原始灰</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="panelRadio" <%- userStyle.panel == 'warning' ? 'checked' : '' %> value='warning'>赤金黄</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="panelRadio" <%- userStyle.panel == 'primary' ? 'checked' : '' %> 
+								value='primary' >宝石蓝</label>
+					</div></td>
+				</tr>
+				<tr class='czlife-no-top-border'>
+					<td></td>
+					<td><div class='radio'>
+						<label><input type="radio" name="panelRadio" <%- userStyle.panel == 'info' ? 'checked' : '' %> 
+							value='info'>天空蓝</label>
+					</div></td>
+					<td><div class='radio'>
+							<label><input type="radio" name="panelRadio" <%- userStyle.panel == 'success' ? 'checked' : '' %>  value='success' >翡翠绿</label>
+					</div></td>
+
+					<td><div class='radio'>
+							<label><input type="radio" name="panelRadio"  <%- userStyle.panel == 'danger' ? 'checked' : '' %> 
+								value='danger' >粉腮红</label>
+					</div></td>
+				</tr>
+			</table>
+			<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
+				<div class='panel-heading'>面板样式</div>
+				<div class='panel-body'>
+					面板样式示例
+				</div>
+			</div>
+			<button type="button" class="btn btn-primary czlife-float-right" >&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+		</div>
+</div>
+
+
+<script type='text/javascript' src='/views-user-setting-uiManage.js'></script>
+

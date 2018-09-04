@@ -1,0 +1,86 @@
+<%- include('../component/page-header') %>
+
+<%- include('../component/page-nav') %>
+
+<%- include('../component/page-notice') %>
+
+<%- include('../component/modal-article') %>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-lg-8'>
+			<h3 class='page-header'>修改文章</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-8'>
+			<div class='row'>
+				<form class='form' id='article-modify-form'>
+					<input style='display: none' name='userId' value='<%- article.author._id %>'/>
+					<input style='display: none' name='articleId' value='<%- article._id %>'/>
+					<div class='form-group col-lg-12'>
+						<label >标题</label>
+						<input type='text' class='form-control' placeholder='请输入文章标题' value ='<%- article.title %>' name='title'/>
+					</div>
+					<div class='form-group col-lg-6'>
+						<label >分类</label>
+						<select class='form-control' name='category'>
+							<% if (article.category == 'front') { -%>
+								<option value='front' selected>前端开发</option>
+							<% } else { -%>
+								<option value='front'>前端开发</option>
+							<% } -%>
+							<% if (article.category == 'node') { -%>
+								<option value='node' selected>NodeJs</option>
+							<% } else { -%>
+								<option value='node'>NodeJs</option>
+							<% } -%>
+							<% if (article.category == 'note') { -%>
+								<option value='note' selected>每日笔记</option>
+							<% } else { -%>
+								<option value='note'>每日笔记</option>
+							<% } -%>
+						</select>
+					</div>
+					<div class='form-group col-lg-6'>
+						<label>可见性</label>
+						<select class='form-control' name='visibility'>
+							<% if (article.visibility == 'true') { -%>
+								<option value='true' selected>所有人可见</option>
+							<% } else { -%>
+								<option value='true'>所有人可见</option>
+							<% } -%>
+							<% if (article.visibility == 'false') { -%>
+								<option valie='false' selected>仅自己可见</option>
+							<% } else { -%>
+								<option valie='false'>仅自己可见</option>
+							<% } -%>
+						</select>
+					</div>
+					<div class='form-group col-lg-12'>
+						<label>内容</label>
+						<textarea class='form-control' placeholder='请输入内容' name='content' id='modifyArticle-summernote'>
+							<%- article.content %>
+						</textarea>
+					</div>
+					<div class='form-group'>
+						<div class='col-lg-offset-8 col-lg-4'>
+							<button type='button' class='btn btn-primary czlife-full-width-btn' id='modifyArticle-submitBtn'>确认修改</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='col-lg-4'>
+			<%- include('../component/card-introduction') %>
+			<%- include('../component/card-hot-article') %>
+			<%- include('../component/card-recommend-article') %>
+		</div>
+	</div>
+</div>
+
+
+
+<script type='text/javascript' src='/views-article-modify.js'></script>
+
+<%- include('../component/page-footer') %>

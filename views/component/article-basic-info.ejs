@@ -1,0 +1,18 @@
+<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
+	<div class='panel-body'>
+		<h3><%- article.title %></h3>
+		<ul class='czlife-article-basic-info'>
+			<li><span >&nbsp;•&nbsp;</span><a href='#'><%- article.author.nickname %></a></li>
+			<% if (article.category == 'front') { -%>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>前端开发</a></li>
+			<% } else if (article.category == 'node') { -%>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>NodeJs</a></li>
+			<% } else { %>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>每日笔记</a></li>
+			<% } -%>
+			<li><span >&nbsp;•&nbsp;</span><%- article.created_at %></li>
+			<li><span >&nbsp;•&nbsp;</span>阅读量&nbsp;&nbsp;<%- article.bt %></li>
+		</ul>
+		<p><%- article.content %></p>
+	</div>
+</div>

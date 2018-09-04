@@ -1,0 +1,213 @@
+﻿body {
+	padding-top: 70px;
+	/*background-image: url('/images/back.png');*/
+	/*background-color: #f8f8f8;*/
+	background-size: cover;
+}
+
+body a {
+	cursor: pointer;
+}
+
+.czlife-logo {
+	height: 40px;
+	margin-top: -10px;
+}
+
+.czlife-footer {
+	height: 100px;
+	margin-bottom: 0px;
+	margin-top: 15px;
+	height: 100px;
+	border-radius: 0;
+}
+
+.czlife-page-area {
+	text-align: center;
+}
+
+/*为了抵消栅栏系统的row自带的marin*/
+.czlife-add-padding-15 {
+	padding: 15px;
+}
+
+/*使modal居中显示*/
+.czlife-modal {
+	top: 30%;
+}
+
+.czlife-full-width-btn {
+	width: 100%;
+}
+
+.czlife-article-basic-info {
+	padding: 15px 0px;
+}
+
+.czlife-article-basic-info li {
+	display: inline-block;
+	color: #969696;
+}
+
+.czlife-item-right-div {
+	display: inline-block;
+    float: right;
+    margin: 10px;
+    color: #999;
+}
+
+.czlife-item-right-no-margin-div {
+	display: inline-block;
+    float: right;
+    color: #999;
+}
+
+.czlife-item-right-div2 {
+	display: inline-block;
+    float: right;
+    color: #999;
+}
+
+/*
+overflow: hidden
+overflow 属性规定当内容溢出元素框时发生的事情。这个属性定义溢出元素内容区的内容会如何处理。hidden 表示内容会被修剪，并且剪掉的内容是不可见的。
+
+white-space: nowrap
+规定文本不进行换行。white-space 属性设置如何处理元素内的空白。nowrap 表示文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。
+
+text-overflow: ellipsis
+text-overflow 属性规定当文本溢出包含元素时发生的事情。ellipsis 表示显示省略符号来代表被修剪的文本。
+
+这个样式是设置文章标题过长时自动隐藏
+*/
+.czlife-article-title-link {
+	display: inline-block;
+    width: 70%;
+    overflow: hidden;  
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.czlife-left-menu {
+	padding: 15px;
+    background-color: #fff;
+    border-right: 1px solid #eee;
+    border-radius: 4px
+}
+
+.czlife-right-content {
+	padding: 15px;
+}
+
+.czlife-margin-bottom-20 {
+	margin: 0px 0px 20px 0px;
+}
+
+.czlife-margin-20 {
+	margin: 20px;
+}
+
+.czlife-float-right {
+	float: right;
+}
+
+.czlife-float-left {
+	float: left;
+}
+
+.czlife-comment-item {
+	border-bottom: 1px solid #ddd;
+	padding: 10px;
+}
+
+.czlife-back-color-gray {
+	background-color: #f4f4f4;
+}
+
+.czlife-close-comment-div {
+	color: #337ab7;
+	cursor: pointer;
+}
+
+.czlife-open-comment-span {
+	color: #337ab7;
+	cursor: pointer;
+}
+
+.czlife-text-align-right {
+	text-align: right;
+}
+
+.czlife-inline-block {
+	display: inline-block;
+}
+
+.czlife-height-40-line-3 {
+	height: 40px;
+	line-height: 3.3;
+}
+
+.czlife-padding-left-10 {
+	padding-left: 10px;
+}
+
+.czlife-overflow-pot {
+	overflow: hidden;  
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.czlife-span {
+	font-size: 12px;
+	padding: 3px;
+}
+
+.czlife-footer {
+	text-align:center
+}
+
+.czlife-footer .czlife-ul {
+	margin-top: 25px;
+	display: inline-block;
+	float: none;
+}
+
+
+.czlife-fix-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+
+#nav-go-btn {
+	cursor: pointer;
+}
+
+.czlife-no-top-border td {
+	border: 0px !important;
+}
+
+.czlife-no-top-border th {
+	border: 0px !important;
+}
+
+.czlife-nav-default {
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+}
+
+.czlife-nav-default {
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+}
+
+/*用户排行那里 按照积分 文章 评论排行的导航栏应该在右侧*/
+.czlife-right-ul li {
+	float: right;
+}
+
+
+
+
+
+

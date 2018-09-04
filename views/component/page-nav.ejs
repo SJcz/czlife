@@ -1,0 +1,64 @@
+<nav class='navbar <%- userStyle.nav ? 'navbar-' + userStyle.nav : 'navbar-inverse' %> navbar-fixed-top'>
+	<input style='display: none' value=<%- user ? user._id : ''%> id='global-user-id'/>
+	<!-- 因为很多请求都需要用到user id, 有些请求是用ajax而不是表单提交的, 不好使用全局变量保存, 所以用隐藏的输入框保存 -->
+	<div class='container'>
+		<a class='navbar-brand' href='/'>
+			<img src='/images/logo.png' class='czlife-logo'/>
+		</a>
+		<ul class='nav navbar-nav'>
+			<% if (activeTab == 'all') { -%>
+				<li class='active'><a href='/'>首页</a></li>
+				<li><a href='/index/?tab=front'>前端开发</a></li>
+				<li><a href='/index/?tab=node'>NodeJs</a></li>
+				<li><a href='/index/?tab=note'>每日笔记</a></li>
+			<% } else if (activeTab == 'front') { -%>
+				<li><a href='/index'>首页</a></li>
+				<li class='active'><a href='/index/?tab=front'>前端开发</a></li>
+				<li><a href='/index/?tab=node'>NodeJs</a></li>
+				<li><a href='/index/?tab=note'>每日笔记</a></li>
+			<% } else if (activeTab == 'node') { -%>
+				<li><a href='/index'>首页</a></li>
+				<li><a href='/index/?tab=front'>前端开发</a></li>
+				<li class='active'><a href='/index/?tab=node'>NodeJs</a></li>
+				<li><a href='/index/?tab=note'>每日笔记</a></li>
+			<% } else if (activeTab == 'note') { -%>
+				<li><a href='/index'>首页</a></li>
+				<li><a href='/index/?tab=front'>前端开发</a></li>
+				<li><a href='/index/?tab=node'>NodeJs</a></li>
+				<li class='active'><a href='/index/?tab=note'>每日笔记</a></li>
+			<% } else { -%>
+				<li><a href='/index'>首页</a></li>
+				<li><a href='/index/?tab=front'>前端开发</a></li>
+				<li><a href='/index/?tab=node'>NodeJs</a></li>
+				<li><a href='/index/?tab=note'>每日笔记</a></li>
+			<% } -%>
+		</ul>
+		<ul class='nav navbar-nav navbar-right'>
+			<% if (user) { %>
+				<li class='dropdown'>
+					<a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>
+						<%- user.nickname %><span class='caret'></span>	
+					</a>
+					<ul class='dropdown-menu'>
+						<li><a href='/setting/<%- user._id %>'>账号设置</a></li>
+						<li><a href='/signout'>退出</a></li>
+					</ul>
+				</li>
+			<% } else { %>
+				<li><a href='/signin'><span class='glyphicon glyphicon-log-in'></span> 登陆</a></li>
+				<li><a href='/signup'><span class='glyphicon glyphicon-user'></span> 注册</a></li>
+			<% } -%>
+			<li>
+				<button role='button' onclick='window.location.href="/article/create"' 
+				class='btn btn-info navbar-btn'><span class='glyphicon glyphicon-pencil'></span> 投稿</button>
+			</li>
+			
+		</ul>
+		<form class='navbar-form navbar-right' role='search'>
+			<div class="input-group">
+      			<input type="text" class="form-control" placeholder="Search for..." id='nav-search-input'/>
+      			<span class='input-group-addon' id='nav-go-btn'>Go</span>
+    		</div>
+		</form>
+	</div>
+</nav>

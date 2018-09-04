@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title><%- project.title %></title>
+		<script type='text/javascript' src='/javascripts/jquery.min.js'></script>
+		<script type='text/javascript' src='https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+		<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
+		<script type='text/javascript' src='/javascripts/bootstrapValidator.min.js'></script>
+		<link type='text/css' rel='stylesheet' href='https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css'/>
+		<link type='text/css' rel='stylesheet' href='/stylesheets/bootstrapValidator.min.css'/>
+		<link type='text/css' rel='stylesheet' href='/stylesheets/style.css'/>
+		<!-- include summernote css/js -->
+		<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet" />
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+		<!-- 映入中文文件, summernote(langL 'zh-CN') -->
+		<script src="/javascripts/summernote-zh-CN.js"></script>
+
+		<script>
+			$(document).ready(() => {
+				//关于页面底部, 需要保证在每个页html页面, 底部区域永远在最下面
+				// 1 如果body高度大于浏览器页面可用高度， 底部区域正常显示（通过滚动轮）
+				// 2 如果body高度小于浏览器页面可用高度， 底部区域显示在最下方
+				if (window.innerHeight > document.body.clientHeight) {
+					$('.czlife-footer').addClass('czlife-fix-footer')
+				}
+
+				$('#nav-go-btn').click(() => {
+					if ($('#nav-search-input').val().trim() !== '') {
+						window.location.href = '/article/search?title=' + $('#nav-search-input').val().trim()
+					}
+				})
+
+
+				//设置样式
+				/*
+				if ($('#global-user-id').val()) {
+					$.get('/api/getUserStyle?userId=' + $('#global-user-id').val())
+					.done((result) => {
+						console.log(result)
+						if (result) {
+							result = JSON.parse(result)
+							changePageStyle(result.nav, result.back, result.panel)
+						}
+					})
+					.fail((err) => {
+						console.log(err.message)
+						alert('得到用户样式异常')
+					})
+				}
+
+				function changePageStyle (nav, back, panel) {
+					if (nav == 'default') {
+						$('nav.navbar').removeClass('navbar-inverse').addClass('navbar-' + nav)
+					} else if (nav == 'inverse') {
+						$('nav.navbar').removeClass('navbar-default').addClass('navbar-' + nav)
+					}
+					document.body.style.backgroundColor = back
+					$('.panel').attr('class', 'panel panel-' + panel)
+				}
+				*/
+			})
+			
+		</script>
+	</head>
+	<body style='background-color: <%- userStyle.back ?  userStyle.back : '#f8f8f8' %>'>

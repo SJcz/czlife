@@ -1,0 +1,27 @@
+<div>
+	<h3 class='page-header '>用户排行</h3>
+	<ul class="nav nav-pills czlife-right-ul" style='margin-bottom: 20px' id='setting-user-srot-nav'>
+		<li role="presentation" sort='commentCount' ><a>回复</a></li>
+		<li role="presentation" sort='articleCount'><a>文章</a></li>
+  		<li role="presentation" class="active" sort='score' ><a>积分</a></li>
+	</ul>
+	<table class="table table-striped" id='setting-user-sort-table'>
+		<tr>
+			<th></th>
+			<th>用户名</th>
+			<th>积分</th>
+			<th>文章数</th>
+			<th>评论数</th>
+		</tr>
+		<% for (var i = 0; i < allAuthors.length; i++) { -%>
+			<tr>
+				<td><%- i + 1 %></td>
+				<td><%- allAuthors[i].name %></td>
+				<td><%- allAuthors[i].score %></td>
+				<td><%- allAuthors[i].articleCount %></td>
+				<td><%- allAuthors[i].commentCount %></td>
+			</tr>
+		<% } -%>
+	</table>
+</div>
+

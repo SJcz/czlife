@@ -1,0 +1,18 @@
+<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
+	<% if (user) { -%>
+		<div class='panel-heading'>个人信息</div>
+		<div class='panel-body'>
+			<div><%- user.nickname %>, <%- user.created_at.substr(0, 4) %>年加入</div>
+			<div><%- user.bio %></div>
+		</div>
+	<% } else { -%>
+		<div class='panel-heading'>czlife 个人网站</div>
+		<div class='panel-body'>
+			这个个人网站是用来记录自己的一些心得和笔记的, 想要加入吗? 那就一起吧.
+			<br>
+			<a class='btn btn-primary' href='/signin' role='button'>登陆</a>
+			<a class='btn btn-primary' href='/signup' role='button'>注册</a>
+		</div>
+	<% } -%>
+	
+</div>

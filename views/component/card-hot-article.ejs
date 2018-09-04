@@ -1,0 +1,16 @@
+<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
+	<div class='panel-heading'>热门文章</div>
+	<ul class='list-group'>
+        <% hotArticle.forEach((article) => { %>
+            <li class="list-group-item">
+            	<div style='height: 20px'>
+            		<a class='czlife-article-title-link' href='/article/<%- article._id %>'><span><%- article.title %></span></a>
+					<div class='czlife-item-right-div2'>
+						<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;<%- article.bt %></span>&nbsp;
+						<span><i class='glyphicon glyphicon-comment'></i>&nbsp;<%- article.commentCount %></span>
+					</div>
+            	</div>
+            </li>
+        <% }) -%> 
+	</ul>
+</div>

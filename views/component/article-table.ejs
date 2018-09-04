@@ -1,0 +1,22 @@
+<div>
+	<h3 class='page-header czlife-margin-bottom-20'>所有文章</h3>
+	<table class="table table-hover" >
+		<tr class='czlife-no-top-border'>
+			<th>用户名</th>
+			<th>文章名</th>
+			<th>浏览次数</th>
+			<th>评论数</th>
+			<th>操作</th>
+		</tr>
+		<% for (var i = 0; i < allArticles.length; i++) { -%>
+			<tr>
+				<td><%- allArticles[i].author.name %></td>
+				<td><a href='/article/<%- allArticles[i]._id %>'><%- allArticles[i].title %></a></td>
+				<td><%- allArticles[i].bt %></td>
+				<td><%- allArticles[i].commentCount %></td>
+				<td><a href="javascript: showDeleteModal('<%- allArticles[i]._id %>')">删除</a></td>
+			</tr>
+		<% } -%>
+	</table>
+</div>
+

@@ -1,0 +1,57 @@
+<%- include('../component/page-header') %>
+
+<%- include('../component/page-nav') %>
+
+<%- include('../component/page-notice') %>
+
+<%- include('../component/modal-sign') %>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-lg-offset-3 col-lg-6'>
+			<h3 class='page-header'>用户登陆</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-lg-offset-3 col-lg-6'>
+			<div class='row czlife-add-padding-15'>
+				<form class='form-horizontal' id='signin-form'>
+					<div class='form-group'>
+						<label class='col-lg-2'>用户名</label>
+						<div class='col-lg-10'>
+							<input type='text' class='form-control' placeholder='请输入用户名' name='username' 
+							value='<%- loginHelp ? loginHelp.username : "" %>'/>
+						</div>
+					</div>
+					<div class='form-group'>
+						<label class='col-lg-2'>密码</label>
+						<div class='col-lg-10'>
+							<input type='password' class='form-control' placeholder='请输入密码' name='password' 
+							value='<%- loginHelp ? loginHelp.password : "" %>'/>
+						</div>
+					</div>
+					<div class='form-group'>
+						<div class='col-lg-offset-2 col-lg-10'>
+							<div class='checkbox'>
+								<label><input type='checkbox' name='remember'/>记住我</label>
+							</div>
+						</div>
+					</div>
+					<div class='form-group'>
+						<div class='col-lg-offset-2 col-lg-10'>
+							<button type='button' class='btn btn-info' id='signin-submitBtn'>登陆</button>
+							<button type='button' class='btn btn-info' id='signin-resetBtn'>重置</button>
+							<span><a href='/signup'>还没有账号？点击这里注册吧</a></span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script type='text/javascript' src='/views-signin.js'></script>
+
+<%- include('../component/page-footer') %>

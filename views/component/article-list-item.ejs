@@ -1,0 +1,20 @@
+<li class="list-group-item">
+	<a class='czlife-float-left'>
+		<img class='img-circle' style='width: 40px;height: 40px' src='/<%- article.author.avatar %>'/>
+	</a>
+	<div class='czlife-float-right czlife-height-40-line-3' style='color: #999;'>
+		<span><i class='glyphicon glyphicon-dashboard'></i>&nbsp;<%- article.created_at %></span>&nbsp;
+		<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;<%- article.bt %></span>&nbsp;
+		<span><i class='glyphicon glyphicon-comment'></i>&nbsp;<%- article.commentCount %></span>
+	</div>
+	<div class='czlife-height-40-line-3 czlife-padding-left-10 czlife-overflow-pot'>
+		<% if (article.category == 'front') { -%>
+			<span class="label label-primary czlife-span">前端开发</span>
+		<% } else if (article.category == 'node') { -%>
+			<span class="label label-info czlife-span">NodeJS</span>
+		<% } else { %>
+			<span class="label label-success czlife-span">每日笔记</span>
+		<% } -%>
+		<a href='/article/<%- article._id %>'><span><%- article.title %></span></a>
+	</div>
+</li>

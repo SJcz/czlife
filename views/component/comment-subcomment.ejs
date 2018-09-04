@@ -1,0 +1,27 @@
+<% if (subCommentList.length > 0) { -%>
+<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %> czlife-margin-20'>
+	<ul class='list-group'>
+		<% subCommentList.forEach((subComment) => { %>
+			<li class='list-group-item czlife-back-color-gray'>
+				<a href='#'><img class='img-circle' style='width: 40px;height: 40px' 
+					src='/<%- subComment.srcAuthor.avatar %>'/></a>
+				<span>
+					<a><%- subComment.srcAuthor.nickname %></a> 
+					回复 
+					<a><%- subComment.tarAuthor.nickname %></a>： 
+					<%- subComment.content %>
+				</span>
+				<div class='czlife-float-right'>
+					<span style='color: #969696'>&nbsp;<%- subComment.created_at %></span>	
+					&nbsp;&nbsp;
+					<span class='czlife-open-comment-span' 
+						onclick="showSubCommentForm('<%- subComment.srcAuthor._id %>', '<%- subComment.srcAuthor.nickname %>',
+						'<%- subComment.parentComment %>', this, 'sub')"> 回复</span>
+				</div>
+			</li>
+		<% }) -%> 
+	</ul>
+</div>
+<% } -%>
+	
+

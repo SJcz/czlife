@@ -1,0 +1,27 @@
+<%- include('../component/page-header') %>
+
+<%- include('../component/page-nav') %>
+
+<%- include('../component/page-notice') %>
+
+<%- include('../component/modal-article') %>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-lg-8'>
+			<div class='row'>
+				<%- include('../component/article-basic-info') %>
+				<%- include('../component/comment-basic-info') %>
+			</div>
+		</div>
+		<div class='col-lg-4'>
+			<%- include('../component/card-introduction') %>
+			<%- include('../component/card-hot-article') %>
+			<%- include('../component/card-recommend-article') %>
+		</div>
+	</div>
+</div>
+
+<script type='text/javascript' src='/views-article-detail.js'></script>
+
+<%- include('../component/page-footer') %>

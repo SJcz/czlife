@@ -1,0 +1,75 @@
+<%- include('../component/page-header') %>
+
+<%- include('../component/page-nav') %>
+
+<%- include('../component/page-notice') %>
+
+<%- include('../component/modal-setting') %>
+
+<%- include('../component/modal-delete-article') %>
+
+<%- include('../component/modal-delete-user') %>
+
+<div class='container'>
+	<div class='row'>
+		<div class='col-lg-4 czlife-left-menu'>
+			<ul class="nav nav-pills nav-stacked">
+				<% if (setting_tab == 'userInfo') { -%>
+					<li role="presentation" class="active"><a href="/setting/<%- user._id %>?tab=userInfo">个人信息</a></li>
+				<% } else { -%>
+					<li role="presentation"><a href="/setting/<%- user._id %>?tab=userInfo">个人信息</a></li>
+				<% } -%>
+
+				<% if (setting_tab == 'changePassword') { -%>
+					<li role="presentation" class='active'><a href="/setting/<%- user._id %>?tab=changePassword">修改密码</a></li>
+				<% } else { -%>
+					<li role="presentation"><a href="/setting/<%- user._id %>?tab=changePassword">修改密码</a></li>
+				<% } -%>
+
+				<% if (setting_tab == 'userCenter') { -%>
+					<li role="presentation" class='active'><a href="/setting/<%- user._id %>?tab=userCenter">用户中心</a></li>
+				<% } else { -%>
+					<li role="presentation"><a href="/setting/<%- user._id %>?tab=userCenter">用户中心</a></li>
+				<% } -%>
+
+				<% if (setting_tab == 'articleManage') { -%>
+					<li role="presentation" class='active'><a href="/setting/<%- user._id %>?tab=articleManage">文章管理</a></li>
+				<% } else { -%>
+					<li role="presentation"><a href="/setting/<%- user._id %>?tab=articleManage">文章管理</a></li>
+				<% } -%>
+
+				<% if (setting_tab == 'uiManage') { -%>
+					<li role="presentation" class='active'><a href="/setting/<%- user._id %>?tab=uiManage">个人界面</a></li>
+				<% } else { -%>
+					<li role="presentation"><a href="/setting/<%- user._id %>?tab=uiManage">个人界面</a></li>
+				<% } -%>	
+
+				<% if (user.group == 'admin') { -%>
+					<% if (setting_tab == 'adminManage') { -%>
+						<li role="presentation" class='active'><a href="/setting/<%- user._id %>?tab=adminManage">后台管理</a></li>
+					<% } else { -%>
+						<li role="presentation"><a href="/setting/<%- user._id %>?tab=adminManage">后台管理</a></li>
+					<% } -%>
+				<% } -%>	
+			</ul>
+		</div>
+		<div class='col-lg-8 czlife-right-content'>
+			<% if (setting_tab == 'userInfo') { -%>
+				<%- include('../component/setting-user-info') %>
+			<% } else if (setting_tab == 'changePassword'){ -%>
+				<%- include('../component/setting-change-password') %>
+			<% } else if (setting_tab == 'userCenter'){ -%>
+				<%- include('../component/setting-user-center') %>
+			<% } else if (setting_tab == 'articleManage'){ -%>
+				<%- include('../component/setting-article-manage') %>
+			<% } else if (setting_tab == 'uiManage'){ -%>
+				<%- include('../component/setting-ui-manage') %>
+			<% } else if (setting_tab == 'adminManage'){ -%>
+				<%- include('../component/setting-admin-manage') %>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+
+<%- include('../component/page-footer') %>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <title>Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/welcome-style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <!-- remember, jQuery is completely optional -->
+  <script type='text/javascript' src='javascripts/jquery.min.js'></script>
+  <script type='text/javascript' src='javascripts/jquery.particleground.js'></script>
+  <script type='text/javascript'>
+      $(document).ready(function() {
+        $('#particles').particleground({
+          dotColor: '#5cbdaa',
+          lineColor: '#5cbdaa'
+        });
+        $('#intro').css({
+          'margin-top': -($('#intro').height() / 2)
+        });
+      });
+  </script>
+</head>
+
+<body>
+
+<div id="particles">
+  <div id="intro">
+    <h1>欢迎来到My Life</h1>
+    <p>一个记录自己学习, 开发过程的个人博客</p>
+    <a href="/index" class="btn">进入主页</a>
+  </div>
+</div>
+
+</body>
+</html>

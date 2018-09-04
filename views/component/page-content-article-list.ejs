@@ -1,0 +1,33 @@
+<div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
+	<div class='panel-heading'>
+		<% if (activeTab == 'front') { -%>
+			所有文章 / 前端开发
+		<% } else if (activeTab == 'note') { -%>
+			所有文章 / 每日笔记
+		<% } else if (activeTab == 'node') { -%>
+			所有文章 / NodeJs
+		<% } else { -%>
+			所有文章
+		<% } %>
+	</div>
+	<ul class='list-group'>
+        <% articleList.forEach((article) => { %>
+            <%- include('./article-list-item', {article: article}) %>
+        <% }) -%> 
+	</ul>
+	<nav aria-label='Page navigation' class='czlife-page-area'>
+		<ul class='pagination'>
+			<li><a href='/?tab=<%- activeTab %>&index=<%- activeIndex - 1 > 0 ? activeIndex - 1 : 1%>' aria-label='Previous'>
+				<span aria-hidder='true'>&laquo;</span></a></li>
+			<% numberList.forEach((number) => { %>
+				<% if (activeIndex == number) { -%>
+					<li class='active'><a href='/?tab=<%- activeTab %>&index=<%- number %>'><%- number %></a></li>
+				<% } else { -%>
+					<li><a href='/?tab=<%- activeTab %>&index=<%- number %>'><%- number %></a></li>
+				<% } -%>
+        	<% }) -%>
+			<li><a href='/?tab=<%- activeTab %>&index=<%- activeIndex + 1 > maxNumber ? maxNumber : activeIndex + 1 %>' aria-label='Next'>
+				<span aria-hidder='true'>&raquo;</span></a></li>
+		</ul>
+	</nav>
+</div>

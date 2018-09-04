@@ -1,0 +1,67 @@
+<div>
+<h3 class='page-header czlife-margin-bottom-20'>用户信息</h3>
+		<img src='/<%- user.avatar %>' class='img-responsive img-circle center-block' style='height: 100px;margin-bottom: 20px' alt='Responsive image'>
+		<form class='form-horizontal' id='setting-user-form' enctype='multipart/form-data'>
+			<input style='display: none' name='userId' value='<%- user._id %>'/>
+			<div class='form-group'>
+				<label class='col-lg-2'>用户名</label>
+				<div class='col-lg-10'>
+					<label><%- user.name %></label>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-lg-2'>积分</label>
+				<div class='col-lg-10'>
+					<label><%- user.score %></label>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-lg-2'>头像</label>
+				<div class='col-lg-10'>
+					<input type='file' name='avatar'/>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-lg-2'>昵称</label>
+				<div class='col-lg-10'>
+					<input type='text' class='form-control' value='<%- user.nickname %>' name='nickname'/>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-lg-2'>性别</label>
+				<div class='col-lg-10'>
+					<select class='form-control' name='gender'>
+						<% if (user.gender == 'm') { -%>
+							<option value='f'>外星人</option>
+							<option value='m' selected>男</option>
+							<option value='w'>女</option>
+						<% } else if (user.gender == 'w') { -%>
+							<option value='f'>外星人</option>
+							<option value='m'>男</option>
+							<option value='w' selected>女</option>
+						<% } else { -%>
+							<option value='f'>外星人</option>
+							<option value='m'>男</option>
+							<option value='w'>女</option>
+						<% } %>
+					</select>
+				</div>
+			</div>	
+			<div class='form-group'>
+				<label class='col-lg-2'>个人简介</label>
+				<div class='col-lg-10'>
+					<textarea placeholder='如果你什么都不输入, 那我就只好说这个人很懒哦...' class='form-control' rows=10 name='bio'><%- user.bio %></textarea >
+				</div>
+			</div>
+
+			<div class='form-group'>
+				<div class='col-lg-offset-2 col-lg-10'>
+					<button type='button' id='setting-userInfo-submitBtn' class='btn btn-info czlife-float-right'>确认修改</button>
+				</div>
+			</div>
+		</form>
+</div>
+
+
+<script type='text/javascript' src='/views-user-setting-userInfo.js'></script>
+

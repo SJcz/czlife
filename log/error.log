@@ -1,0 +1,75 @@
+[2018-08-22T10:43:53.793] [INFO] error - { SyntaxError: D:\SublimeProject\CzLife\views\setting\user-setting.ejs:66
+    64| 				<%- include('../component/setting-ui-manage') %>
+    65| 			<% } else if (setting_tab == 'adminManage'){ -%>
+ >> 66| 				<%- include('../component/setting-admin-manage') %>
+    67| 			<% } %>
+    68| 		</div>
+    69| 	</div>
+
+D:\SublimeProject\CzLife\views\component\setting-admin-manage.ejs:2
+    1| <div>
+ >> 2| 	<%- include('./article-table') %>
+    3| </div>
+    4| 
+    5| <script type='text/javascript' src='/views-user-setting-adminManage.js'></script>
+
+Unexpected token ) in D:\SublimeProject\CzLife\views\component\article-table.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass async: true as an option.
+    at new Function (<anonymous>)
+    at Template.compile (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:618:12)
+    at Object.compile (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:389:16)
+    at handleCache (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:212:18)
+    at includeFile (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:289:10)
+    at include (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:651:16)
+    at eval (eval at compile (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:618:12), <anonymous>:11:17)
+    at returnedFn (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:653:17)
+    at include (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:651:39)
+    at eval (eval at compile (D:\SublimeProject\CzLife\node_modules\ejs\lib\ejs.js:618:12), <anonymous>:153:17)
+  path: 'D:\\SublimeProject\\CzLife\\views\\setting\\user-setting.ejs' } '\n/setting/5b5fd9bced4c1f39d42b9ab5?tab=adminManage\n'
+[2018-08-22T11:07:00.243] [INFO] error - Error: 权限不足
+    at D:\SublimeProject\CzLife\routes\setting\setting.js:38:15
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at checkLogin (D:\SublimeProject\CzLife\middleware\checkLoginStatus.js:14:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:281:22
+    at param (D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:354:14) '\n/setting/deleteUser?userId=5b723ae8b0456515a4b86bfe\n'
+[2018-08-22T11:08:25.540] [INFO] error - Error: 权限不足
+    at D:\SublimeProject\CzLife\routes\setting\setting.js:38:15
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at checkLogin (D:\SublimeProject\CzLife\middleware\checkLoginStatus.js:14:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:281:22
+    at param (D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:354:14) '\n/setting/deleteUser?userId=5b723ae8b0456515a4b86bfe\n'
+[2018-08-22T11:09:22.996] [INFO] error - Error: 权限不足
+    at D:\SublimeProject\CzLife\routes\setting\setting.js:38:15
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at checkLogin (D:\SublimeProject\CzLife\middleware\checkLoginStatus.js:14:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:281:22
+    at param (D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:354:14) '\n/setting/deleteUser?userId=5b723ae8b0456515a4b86bfe\n'
+[2018-08-22T11:09:47.007] [INFO] error - Error: 权限不足
+    at D:\SublimeProject\CzLife\routes\setting\setting.js:142:15
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at checkLogin (D:\SublimeProject\CzLife\middleware\checkLoginStatus.js:14:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (D:\SublimeProject\CzLife\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (D:\SublimeProject\CzLife\node_modules\express\lib\router\layer.js:95:5)
+    at D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:281:22
+    at param (D:\SublimeProject\CzLife\node_modules\express\lib\router\index.js:354:14) '\n/setting/deleteUser?userId=5b723ae8b0456515a4b86bfe\n'
