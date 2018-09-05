@@ -2,6 +2,19 @@
 一个简单的个人网站, 项目运行在 [我的个人网站](http://www.godchiz.com)
 <br>
 <br>
+readme文档主要包括：<br>
+&emsp;项目介绍<br>
+&emsp;项目框架<br>
+&emsp;项目功能<br>
+&emsp;项目文件介绍<br>
+&emsp;项目启动步骤<br>
+&emsp;项目页面效果<br>
+<br>
+更多详细介绍, 可以上 http://www.godchiz.com 查看.
+<br>
+
+<br>
+<br>
 ## 项目介绍
   写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
 基本上都是参照N-blog, 不过自己也是扩展了很多新的功能， 比如分页，图表， 表格等等。主要也是用来写写个人日记，一些技术素材等等
@@ -227,7 +240,7 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
 <br>
 <br>
 
-## 项目运行
+## 项目启动步骤
 下载该项目后, 运行项目需要以下几个条件<br>
 1. 安装Node.js 和 npm<br>
 2. 安装Mongodb <br>
