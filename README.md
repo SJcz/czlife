@@ -11,16 +11,19 @@ readme文档主要包括：<br>
 &emsp;项目页面效果<br>
 <br>
 更多详细介绍, 可以上 http://www.godchiz.com 查看.
-<br>
 
 <br>
-<br>
+
+
 ## 项目介绍
-  写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
+
+&emsp;写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
 基本上都是参照N-blog, 不过自己也是扩展了很多新的功能， 比如分页，图表， 表格等等。主要也是用来写写个人日记，一些技术素材等等
 <br>
 <br>
+
 ## 项目框架
+
 整个项目所用到的模块或者框架主要如下:<br>
 &emsp;数据库： MongoDB<br>
 &emsp;服务端： Node.js<br>
