@@ -6,16 +6,237 @@
 基本上都是参照N-blog, 不过自己也是扩展了很多新的功能， 比如分页，图表， 表格等等。主要也是用来写写个人日记，一些技术素材等等
 
 ## 项目框架
-整个项目所用到的模块或者框架主要如下
-数据库： MongoDB
-服务端： Node.js
-服务端web框架： Express 4
-服务端mongodb 操作模块：mongolass
-前端： Javascript
-HTML框架： bootstrap3
-JS框架： Jquery
+整个项目所用到的模块或者框架主要如下<br>
+数据库： MongoDB<br>
+服务端： Node.js<br>
+服务端web框架： Express 4<br>
+服务端mongodb 操作模块：mongolass<br>
+前端： Javascript<br>
+HTML框架： bootstrap3<br>
+JS框架： Jquery<br>
 
-项目所用到js插件
-富文本编辑器： [summernote] (https://github.com/summernote/summernote)
-表单验证： [bootstrapvalidator] (https://github.com/nghuuphuoc/bootstrapvalidator)
+项目所用到js插件<br>
+富文本编辑器： [summernote](https://github.com/summernote/summernote)<br>
+表单验证： [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
 
+## 项目功能
+主页： 分为欢迎页和首页<br>
+文章： 标签分类, 可见性, 发布文章, 修改文章, 删除文章<br>
+评论： 发布评论<br>
+二级评论： 回复某个评论, 发布二级评论<br>
+用户： 登陆, 注册, 登出, 记住账号密码, 修改用户信息（包括上传头像）等等<br>
+设置界面：<br>
+&emsp;用户排行（根据积分, 发布文章数, 评论数）<br>
+&emsp;图表分析数据（网站访问量, 文章发布, 评论数等等） <br>
+&emsp;界面设置(用户可以根据自己的喜好配置不同的页面主体) <br>
+&emsp;文章管理(列出所有发布的文章和所有参与的文章)<br>
+&emsp;后台管理（住用管理员可以看见的界面, 可以对所有用户和文章操作）<br>
+
+## 项目文件介绍
+
+|文件夹或文件|作用|
+--|--|
+config|配置文件, 存储了session, cookie的基本设置, mongodb地址等
+db|数据库文件, 数据库连接, 表结构及表的创建
+log|日志文件, 包括访问日志和错误日志
+middleware|中间件, 比如验证登陆, 得到页面主题设置
+model|数据库表相关增删改查操作,
+public|静态文件, logo图片, 样式文件或者第三方插件
+routes|路由
+upload|存放用户上传的头像，以用户Id为名创建文件夹存放
+views|视图文件
+views-js|视图文件对应的js代码
+app.js|项目启动文件
+installService.js|将项目配置为windows service运行的文件
+package.json|项目说明文件, 里面有项目运行所需安装的包
+
+接下来详细介绍几个文件<br>
+
+config/default.js 配置文件<br>
+~~~
+module.exports = {
+	port: 80,
+	hostname: '0.0.0.0',
+	mongodb: 'mongodb://localhost:27017/czlife',
+	session: {
+		name: 'czlife',
+		secret: 'czlife',
+		maxAge: 1000 * 3600 * 2
+	},
+	cookieTime: 1000 * 3600 * 24 * 30,
+	title: 'Life',
+	description: 'just a simple website to record my daily life.',
+	pageNumber: 15
+}
+~~~
+
+上面代码中, 我们配置了项目运行的主机, 端口, mongodb地址和数据库名, 以及cookie和session的设置.
+pageNumber 是首页文章列表里每一页显示的最大文章数
+
+app.js  启动文件<br>
+~~~
+onst express = require('express')
+const session = require('express-session')
+const formidable = require('express-formidable')
+const cookieParser = require('cookie-parser')
+const config = require('config-lite')(__dirname)
+const flash = require('connect-flash')
+const path = require('path')
+const log4js = require('log4js')
+
+log4js.configure({
+	appenders: {
+		accessLog: {  //访问日志
+			type: 'file',  //类型是文件
+			filename: path.join(__dirname, 'log/access.log'), //文件路径
+			maxLogSize: 10 * 1024 * 1024, // = 10Mb
+			numBackups: 5, // keep five backup files
+			encoding: 'utf-8',
+			compress: true, // compress the backups， 压缩备份文件
+		},
+		errLog: { //错误日志
+			type: 'dateFile',  //类型是日期文件文件
+			filename: path.join(__dirname, '../log/test'),
+			pattern: "-yyyy-MM-dd.log",
+			encoding : 'utf-8',
+			daysTokeep: 180,
+			keepFileExt: false,
+			alwaysIncludePattern: true
+			//filename: path.join(__dirname, 'log/error.log'), //文件路径
+			//pattern: '-yyyy-MM-dd',
+			//compress: true,  //之前生成的日志文件会被压缩
+			//keepFileExt: true //配合pattern使用
+		},
+		out: { //控制台输出
+        	type: 'stdout'
+		}
+ 	},
+  	categories: {
+  		default: { //必须定义一个默认的category
+    		appenders: ['out'], level: 'info' 
+ 		},
+    	access: { 
+    		appenders: ['accessLog'], level: 'info' 
+    	},
+    	error: { 
+    		appenders: ['errLog', 'out'], level: 'info' 
+    	}
+  	}
+});
+
+const routes = require('./routes/entrance')
+
+const app = express()
+
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'views-js')))
+app.use(express.static(path.join(__dirname, 'upload')))
+
+app.use(cookieParser())
+
+app.use(session({
+	name: config.session.name,
+	secret: config.session.secret,
+	resave: true,
+	saveUninitialized: false,
+	cookie: {
+		maxAge: config.session.maxAge
+	}
+}))
+
+//使用这个可以减少前端的modal使用
+app.use(flash())
+
+app.use(log4js.connectLogger(log4js.getLogger('access'), { level: 'info' })) //每次请求都会自动记录到日志里面
+
+app.use(formidable({
+	uploadDir: path.join(__dirname, 'upload'),
+	multiples: false,
+	keepExtensions: true 
+}))
+
+app.locals.project = {
+	title: config.title,
+	description: config.description
+}
+
+app.use((req, res, next) => {
+	res.locals.user = req.session.user
+	res.locals.success = req.flash('success')[0]
+	res.locals.error = req.flash('error')[0]
+	res.locals.activeTab = null //因为每个页面都会有这个固定的
+	//导航栏, 导航栏里面必须用到activeTab这个变量, 这里设置是为了解决某些页面不返回这个变量的问题, 比如注册登录等等...
+
+	//帮助用户简化登陆
+	res.locals.loginHelp = req.cookies.loginHelp
+
+	next()
+})
+
+routes(app)
+
+app.use((err, req, res, next) => {
+	//对于我们主动抛出的异常， 一般来说 err.name 就是Error, 
+	// 那么我们就可以对于主动抛出的异常和代码错误抛出的异常做出区分
+	// 同时对于ajax和非ajax请求也做出区分，一般来说非ajax直接定向到404页面
+	// ajax请求异常返回400状态码,
+	// 人为抛出的异常返回异常信息
+	// 系统异常返回固定的提示语句
+	// 主要是懒...
+
+	log4js.getLogger('error').info(err, '\n' + req.url + '\n')
+	if (req.xhr) {
+		if (err.name == 'Error') {
+			res.status(400).end(err.message)
+		} else {
+			res.status(400).end('服务器异常, 请稍后重试')
+		}
+	} else {
+		res.render('error')
+	}
+})
+
+app.listen(config.port, config.hostname, function () {
+	console.log(`server is running in ${config.hostname}: ${config.port}`)
+})
+~~~
+
+app.js 里面, 我们设置了cookie, session, 异常处理器, 日志设置, 请求数据的解析设置等等
+
+formidable 通过这个模块, 设置了上传文件的存放目录, 请求数据挂载在req.fields下面, 文件挂载在req.files下面 
+
+我们设置了三个静态文件目录, public, upload, views-js<br>
+public 是普通的一个静态文件, 存放样式表, logo等普通文件的
+upload 是用来专门存放用户的头像的, 我们在ejs文件里经常要使用, 用绝对路径方便一点
+view-js 是专门存放视图文件对应的js文件, 每个页面都会引入不同的js文件, 用绝对路径也是方便一点
+
+错误处理<br>
+在错误处理这里, 我们所遇到的所有异常都通过next(error)外下抛, 然后通过异常处理器接收, 在异常处理器里面
+我们通过req.xhr来判断这个请求是不是ajax请求, 如果不是ajax请求, 那么我们直接返回错误界面
+如果是ajax请求, 那么就判断错误类型, 如果是Error类型, 这个类型的错误都是我主动抛出的(比如用户名不存在, 密码错误等等), 那么把这个错误信息返回给用户,
+如果不是Error类型, 那就是系统抛出的错误, 比如(sql 错误, 文件操作失败等等) , 那么就返回固定信息给用户.
+
+
+## 项目运行
+下载该项目后, 运行项目需要以下几个条件
+1. 安装Node.js 和 npm
+2. 安装Mongodb 
+3. Mongodb服务已经启动
+
+安装Node.js 和 npm
+  一般来说, 安装Node.js的同时也会安装npm, 安装完成之后， 打开终端
+  ~~~
+  node -v
+  npm -v
+  ~~~
+  查看安装的版本
+  
+  我们要安装项目运行所需的模块, 通过npm来安装, 但是npm是从国外的服务器上下载这些模块的, 所以速度会非常慢, 可能会导致安装失败等一系列问题, 所以我们需要使用国内镜像地址来下载。
+  
+
+
+
+  
