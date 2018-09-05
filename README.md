@@ -22,6 +22,7 @@ JS框架： Jquery<br>
 表单验证： [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
 <br>
 <br>
+
 ## 项目功能
 主页： 分为欢迎页和首页<br>
 文章： 标签分类, 可见性, 发布文章, 修改文章, 删除文章<br>
@@ -36,6 +37,7 @@ JS框架： Jquery<br>
 &emsp;后台管理（住用管理员可以看见的界面, 可以对所有用户和文章操作）<br>
 <br>
 <br>
+
 ## 项目文件介绍
 
 |文件夹或文件|作用|
@@ -224,14 +226,16 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
 如果不是Error类型, 那就是系统抛出的错误, 比如(sql 错误, 文件操作失败等等) , 那么就返回固定信息给用户.
 <br>
 <br>
-## 项目运行
-下载该项目后, 运行项目需要以下几个条件
-1. 安装Node.js 和 npm
-2. 安装Mongodb 
-3. Mongodb服务已经启动
 
-**安装Node.js 和 npm**
-  <font color=red>注意: 一下所有命令前的 $ 都不要复制, 这只是终端命令的一个标识而已, 为了跟代码区分</font>
+## 项目运行
+下载该项目后, 运行项目需要以下几个条件<br>
+1. 安装Node.js 和 npm<br>
+2. 安装Mongodb <br>
+3. Mongodb服务已经启动<br>
+4. 修改配置文件<br>
+
+**安装Node.js 和 npm**<br>
+  <font color='red'>注意: 一下所有命令前的 $ 都不要复制, 这只是终端命令的一个标识而已, 为了跟代码区分</font>
   一般来说, 安装Node.js的同时也会安装npm, 安装完成之后， 打开终端, 输入一下命令查看安装的版本
   ~~~
   $ node -v
@@ -259,13 +263,46 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
   
   然后等待所有模块下载即可, 下载安装完毕, czlife文件夹下面会出现一个node_modules文件夹, 里面就是我们所下载的所有模块
   
-**安装MongoDB**
+**安装MongoDB**<br>
   百度下载安装适合自己电脑系统的mongodb即可
   
-**Mongodb服务已经启动**
+**Mongodb服务已经启动**<br>
   一般来说, 4.0.0以上版本的mongodb在安装时, 如果不做自定义设置, 那么就会自动配置为windows service启动, 并且mondodb的默认端口为27017, 要查看自己电脑上的mongodb服务是否已经启动, 打开浏览器, 访问 localhost:27017, 看到
-  It looks like you are trying to access MongoDB over HTTP on the native driver port.
-表示mongodb服务已正常启动, 也可以打开任务管理器, 选择服务, 在服务列表里查找
+  ![](./screentshot/mongodb1.png)
+表示mongodb服务已正常启动, 也可以打开任务管理器, 选择服务, 在服务列表里查找MongoDB服务,可以看见正在运行也表示服务已正常启动.
+  ![](./screentshot/mongodb2.png)
+
+**修改配置文件**<br>
+  请将配置文件中的主机名, 端口号, mongodb地址信息进行相应修改, 例如你想运行在在本机的8080端口, 那么port改成8080, mongodb地址如果在本机, 端口号一般不变, 数据库名字改成你自己的配置, 如果mongodb地址指向别的服务器, 那么改成指向的服务器地址即可, 假设配置如下
+  ~~~
+  module.exports = {
+	port: 8080,
+	hostname: '0.0.0.0',
+	mongodb: 'mongodb://localhost:27017/czlife',
+	session: {
+		name: 'czlife',
+		secret: 'czlife',
+		maxAge: 1000 * 3600 * 2
+	},
+	cookieTime: 1000 * 3600 * 24 * 30,
+	title: 'Life',
+	description: 'just a simple website to record my daily life.',
+	pageNumber: 15
+}
+  ~~~
+  
+以上步骤都完成之后, 终端进入czlife文件夹, 命令行输入 node app 启动项目, 
+~~~
+$ cd czlife
+$ node app
+~~~
+控制台输出server is running in 0.0.0.0: 8080, 浏览器访问 localhost:8080 ,  即可进入项目.
+
+## 项目页面效果
+
+
+
+
   
 
 
