@@ -1,10 +1,12 @@
 # czlife
 一个简单的个人网站
-
+<br>
+<br>
 ## 项目介绍
 写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
 基本上都是参照N-blog, 不过自己也是扩展了很多新的功能， 比如分页，图表， 表格等等。主要也是用来写写个人日记，一些技术素材等等
-
+<br>
+<br>
 ## 项目框架
 整个项目所用到的模块或者框架主要如下<br>
 数据库： MongoDB<br>
@@ -18,7 +20,8 @@ JS框架： Jquery<br>
 项目所用到js插件<br>
 富文本编辑器： [summernote](https://github.com/summernote/summernote)<br>
 表单验证： [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
-
+<br>
+<br>
 ## 项目功能
 主页： 分为欢迎页和首页<br>
 文章： 标签分类, 可见性, 发布文章, 修改文章, 删除文章<br>
@@ -31,7 +34,8 @@ JS框架： Jquery<br>
 &emsp;界面设置(用户可以根据自己的喜好配置不同的页面主体) <br>
 &emsp;文章管理(列出所有发布的文章和所有参与的文章)<br>
 &emsp;后台管理（住用管理员可以看见的界面, 可以对所有用户和文章操作）<br>
-
+<br>
+<br>
 ## 项目文件介绍
 
 |文件夹或文件|作用|
@@ -218,25 +222,51 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
 我们通过req.xhr来判断这个请求是不是ajax请求, 如果不是ajax请求, 那么我们直接返回错误界面
 如果是ajax请求, 那么就判断错误类型, 如果是Error类型, 这个类型的错误都是我主动抛出的(比如用户名不存在, 密码错误等等), 那么把这个错误信息返回给用户,
 如果不是Error类型, 那就是系统抛出的错误, 比如(sql 错误, 文件操作失败等等) , 那么就返回固定信息给用户.
-
-
+<br>
+<br>
 ## 项目运行
 下载该项目后, 运行项目需要以下几个条件
 1. 安装Node.js 和 npm
 2. 安装Mongodb 
 3. Mongodb服务已经启动
 
-安装Node.js 和 npm
-  一般来说, 安装Node.js的同时也会安装npm, 安装完成之后， 打开终端
+**安装Node.js 和 npm**
+  <font color=red>注意: 一下所有命令前的 $ 都不要复制, 这只是终端命令的一个标识而已, 为了跟代码区分</font>
+  一般来说, 安装Node.js的同时也会安装npm, 安装完成之后， 打开终端, 输入一下命令查看安装的版本
   ~~~
-  node -v
-  npm -v
+  $ node -v
+  $ npm -v
   ~~~
-  查看安装的版本
   
-  我们要安装项目运行所需的模块, 通过npm来安装, 但是npm是从国外的服务器上下载这些模块的, 所以速度会非常慢, 可能会导致安装失败等一系列问题, 所以我们需要使用国内镜像地址来下载。
   
-
+  我们要安装项目运行所需的模块, 通过npm来安装, 但是npm是从国外的服务器上下载这些模块的, 所以速度会非常慢, 可能会导致安装失败等一系列问题, 所以我们需要使用国内镜像地址来下载.
+  打开终端, 输入以下命令设置镜像地址, 
+  ~~~
+  $ npm config set registry https://registry.npm.taobao.org 
+  ~~~
+  
+  设置完成之后通过以下命令查看npm配置
+  ~~~
+  $ npm config list
+  ~~~
+  
+  以上设置成功后， 终端进入下载的项目文件目录, 比如下载的所有文件都放在D盘czlife这个文件里 那么
+  ~~~
+  $ d:
+  $ cd czlife
+  $ npm install
+  ~~~
+  
+  然后等待所有模块下载即可, 下载安装完毕, czlife文件夹下面会出现一个node_modules文件夹, 里面就是我们所下载的所有模块
+  
+**安装MongoDB**
+  百度下载安装适合自己电脑系统的mongodb即可
+  
+**Mongodb服务已经启动**
+  一般来说, 4.0.0以上版本的mongodb在安装时, 如果不做自定义设置, 那么就会自动配置为windows service启动, 并且mondodb的默认端口为27017, 要查看自己电脑上的mongodb服务是否已经启动, 打开浏览器, 访问 localhost:27017, 看到
+  It looks like you are trying to access MongoDB over HTTP on the native driver port.
+表示mongodb服务已正常启动, 也可以打开任务管理器, 选择服务, 在服务列表里查找
+  
 
 
   
