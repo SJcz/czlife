@@ -1,25 +1,25 @@
 # czlife
-一个简单的个人网站
+一个简单的个人网站, 项目运行在 [我的个人网站](http://www.godchiz.com)
 <br>
 <br>
 ## 项目介绍
-写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
+  写这个项目是在参考了 [N-blog](https://github.com/nswbmw/N-blog) 之后才决定自己写一个个人网站的, 也是一个很简单的项目,
 基本上都是参照N-blog, 不过自己也是扩展了很多新的功能， 比如分页，图表， 表格等等。主要也是用来写写个人日记，一些技术素材等等
 <br>
 <br>
 ## 项目框架
-整个项目所用到的模块或者框架主要如下<br>
-数据库： MongoDB<br>
-服务端： Node.js<br>
-服务端web框架： Express 4<br>
-服务端mongodb 操作模块：mongolass<br>
-前端： Javascript<br>
-HTML框架： bootstrap3<br>
-JS框架： Jquery<br>
+整个项目所用到的模块或者框架主要如下:<br>
+&emsp;数据库： MongoDB<br>
+&emsp;服务端： Node.js<br>
+&emsp;服务端web框架： Express 4<br>
+&emsp;服务端mongodb 操作模块：mongolass<br>
+&emsp;前端： Javascript<br>
+&emsp;HTML框架： bootstrap3<br>
+&emsp;JS框架： Jquery<br>
 
-项目所用到js插件<br>
-富文本编辑器： [summernote](https://github.com/summernote/summernote)<br>
-表单验证： [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
+项目所用到js插件:<br>
+&emsp;富文本编辑器： [summernote](https://github.com/summernote/summernote) <br>
+&emsp;表单验证： [bootstrapvalidator](https://github.com/nghuuphuoc/bootstrapvalidator)
 <br>
 <br>
 
@@ -56,7 +56,7 @@ app.js|项目启动文件
 installService.js|将项目配置为windows service运行的文件
 package.json|项目说明文件, 里面有项目运行所需安装的包
 
-接下来详细介绍几个文件<br>
+接下来详细介绍几个文件:<br>
 
 config/default.js 配置文件<br>
 ~~~
@@ -235,7 +235,7 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
 4. 修改配置文件<br>
 
 **安装Node.js 和 npm**<br>
-  <font color='red'>注意: 一下所有命令前的 $ 都不要复制, 这只是终端命令的一个标识而已, 为了跟代码区分</font>
+  <font color=red size=4>注意: 一下所有命令前的 $ 都不要复制, 这只是终端命令的一个标识而已, 为了跟代码区分</font><br>
   一般来说, 安装Node.js的同时也会安装npm, 安装完成之后， 打开终端, 输入一下命令查看安装的版本
   ~~~
   $ node -v
@@ -268,13 +268,18 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
   
 **Mongodb服务已经启动**<br>
   一般来说, 4.0.0以上版本的mongodb在安装时, 如果不做自定义设置, 那么就会自动配置为windows service启动, 并且mondodb的默认端口为27017, 要查看自己电脑上的mongodb服务是否已经启动, 打开浏览器, 访问 localhost:27017, 
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/mongodb1.png)
 <br>
-看到以上文字, 表示mongodb服务已正常启动, 也可以打开任务管理器, 选择服务, 在服务列表里查找MongoDB服务,可以看见正在运行,也表示服务已正常启动.
+<br>
+  看到以上文字, 表示mongodb服务已正常启动
+  也可以打开任务管理器, 选择服务, 在服务列表里查找MongoDB服务,可以看见正在运行,也表示服务已正常启动.
+<br>
 <br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/mongodb2.png)
 <br>
-
+<br>
 **修改配置文件**<br>
   请将配置文件中的主机名, 端口号, mongodb地址信息进行相应修改, 例如你想运行在在本机的8080端口, 那么port改成8080, mongodb地址如果在本机, 端口号一般不变, 数据库名字改成你自己的配置, 如果mongodb地址指向别的服务器, 那么改成指向的服务器地址即可, 假设配置如下
   ~~~
@@ -303,41 +308,77 @@ $ node app
 
 ## 项目页面效果
 
-欢迎页面<br>
+欢迎页面
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/welcome.png)
-
-首页<br>
+<br>
+<br>
+首页
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/index.png)
-
-登陆页面<br>
+<br>
+<br>
+登陆页面
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/signin.png)
-
-注册页面<br>
+<br>
+<br>
+注册页面
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/signup.png)
-
-文章创建页面<br>
+<br>
+<br>
+文章创建页面
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/createArticle.png)
-
-表格排序及图表显示<br>
+<br>
+<br>
+表格排序及图表显示
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/chartAndTable.png)
-
-模态框提示<br>
+<br>
+<br>
+模态框提示
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/modal.png)
-  
-设置页面-用户信息<br>
+<br>
+<br>
+设置页面-用户信息
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting1.png)
-
-设置页面-修改密码<br>
+<br>
+<br>
+设置页面-修改密码
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting2.png)
-
-设置页面-用户中心<br>
+<br>
+<br>
+设置页面-用户中心
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting3.png)
-
-设置页面-文章管理<br>
+<br>
+<br>
+设置页面-文章管理
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting4.png)
-
-设置页面-个人界面<br>
+<br>
+<br>
+设置页面-个人界面
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting5.png)
-
-设置页面-后台管理<br>
+<br>
+<br>
+设置页面-后台管理
+<br>
+<br>
 ![](https://github.com/SJcz/czlife/blob/master/screenshot/setting6.png)
