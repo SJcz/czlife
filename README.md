@@ -268,9 +268,9 @@ view-js 是专门存放视图文件对应的js文件, 每个页面都会引入�
   
 **Mongodb服务已经启动**<br>
   一般来说, 4.0.0以上版本的mongodb在安装时, 如果不做自定义设置, 那么就会自动配置为windows service启动, 并且mondodb的默认端口为27017, 要查看自己电脑上的mongodb服务是否已经启动, 打开浏览器, 访问 localhost:27017, 看到
-  ![](./screentshot/mongodb1.png)
+  ![](https://github.com/SJcz/czlife/edit/master/screentshot/mongodb1.png)
 表示mongodb服务已正常启动, 也可以打开任务管理器, 选择服务, 在服务列表里查找MongoDB服务,可以看见正在运行也表示服务已正常启动.
-  ![](./screentshot/mongodb2.png)
+  ![](https://github.com/SJcz/czlife/edit/master/screentshot/mongodb2.png)
 
 **修改配置文件**<br>
   请将配置文件中的主机名, 端口号, mongodb地址信息进行相应修改, 例如你想运行在在本机的8080端口, 那么port改成8080, mongodb地址如果在本机, 端口号一般不变, 数据库名字改成你自己的配置, 如果mongodb地址指向别的服务器, 那么改成指向的服务器地址即可, 假设配置如下
