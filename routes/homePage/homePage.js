@@ -39,16 +39,16 @@ router.get('/index', addVisitCount, getHotArticle, getRecommendArticle, function
 		index = parseInt(index)
 	}
 
-	if (['front', 'node', 'note'].indexOf(tab) < 0) {
+	if (['czlife', 'ask', 'note'].indexOf(tab) < 0) {
 		tab = 'all'
 	}
 
 	if (tab == 'all') {
-		category = [{category: 'front'}, {category: 'node'}, {category: 'note'}]
-	} else if (tab == 'front') {
-		category = [{category: 'front'}]
-	} else if (tab == 'node') {
-		category = [{category: 'node'}]
+		category = [{category: 'czlife'}, {category: 'ask'}, {category: 'note'}]
+	} else if (tab == 'czlife') {
+		category = [{category: 'czlife'}]
+	} else if (tab == 'ask') {
+		category = [{category: 'ask'}]
 	} else if (tab == 'note') {
 		category = [{category: 'note'}]
 	}

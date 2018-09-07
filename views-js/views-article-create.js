@@ -67,7 +67,7 @@ $(document).ready(() => {
 	function createArticle_sendRequest () {
 		$.post('/article/create', $('#article-create-form').serialize())
 		.done((result) => {
-			result = JSON.parse(result)
+			//result = JSON.parse(result)
 			window.location.href = '/article/' + result._id
 		})
 		.fail((err) => {

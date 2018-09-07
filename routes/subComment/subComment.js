@@ -16,7 +16,7 @@ router.post('/create', checkLogin, function (req, res, next) {
 
 	SubCommentOperation.createSubComment(subComment).then((result) => {
 		req.flash('success', '提交评论成功...')
-		res.end(JSON.stringify(result.ops[0]))
+		res.status(200).type('json').end(JSON.stringify(result.ops[0]))
 	}).catch(next)
 })
 

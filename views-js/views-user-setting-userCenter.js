@@ -17,8 +17,8 @@ $(document).ready(() => {
 
         $.get('/api/getAllUser?sort=' + sort)
         .then((result) => {
-            result = JSON.parse(result)
-            console.log(result)
+            //result = JSON.parse(result)
+            //console.log(result)
             $('#setting-user-sort-table tbody').html('<tr><th></th><th>用户名</th><th>积分</th><th>文章数</th><th>评论数</th></tr>')
 
             result.forEach((user, index) => {
@@ -46,7 +46,7 @@ $(document).ready(() => {
 
         $.get('/api/getChartData?category=' + category)
         .then((result) => {
-            result = JSON.parse(result)
+            //result = JSON.parse(result)
             generateChart(category, result)
         })
         .catch((err) => {

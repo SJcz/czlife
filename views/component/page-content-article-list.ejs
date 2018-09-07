@@ -1,11 +1,11 @@
 <div class='panel <%- userStyle.panel ? 'panel-' + userStyle.panel : 'panel-default' %>'>
 	<div class='panel-heading'>
-		<% if (activeTab == 'front') { -%>
-			所有文章 / 前端开发
+		<% if (activeTab == 'czlife') { -%>
+			所有文章 / czlife
+		<% } else if (activeTab == 'ask') { -%>
+			所有文章 / 问答
 		<% } else if (activeTab == 'note') { -%>
-			所有文章 / 每日笔记
-		<% } else if (activeTab == 'node') { -%>
-			所有文章 / NodeJs
+			所有文章 / 个人笔记
 		<% } else { -%>
 			所有文章
 		<% } %>

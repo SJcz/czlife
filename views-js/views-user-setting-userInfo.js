@@ -66,7 +66,7 @@ $(document).ready(function () {
             contentType : false, //默认数据传输方式是application,改为false，编程multipart
             data : oMyForm,
         }).done(function(data){
-        	console.log(data)
+        	//console.log(data)
             window.location.reload()
         }).fail(function(err){
         	console.log(1111111111)

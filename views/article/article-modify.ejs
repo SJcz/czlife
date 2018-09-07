@@ -25,20 +25,24 @@
 					<div class='form-group col-lg-6'>
 						<label >分类</label>
 						<select class='form-control' name='category'>
-							<% if (article.category == 'front') { -%>
-								<option value='front' selected>前端开发</option>
+							<% if (user.group == 'admin') { -%>
+								<% if (article.category == 'czlife') { -%>
+									<option value='czlife' selected>czlife</option>
+								<% } else { -%>
+									<option value='czlife'>czlife</option>
+								<% } -%>
+								<% if (article.category == 'ask') { -%>
+									<option value='ask' selected>问答</option>
+								<% } else { -%>
+									<option value='ask'>问答</option>
+								<% } -%>
+								<% if (article.category == 'note') { -%>
+									<option value='note' selected>个人笔记</option>
+								<% } else { -%>
+									<option value='note'>个人笔记</option>
+								<% } -%>
 							<% } else { -%>
-								<option value='front'>前端开发</option>
-							<% } -%>
-							<% if (article.category == 'node') { -%>
-								<option value='node' selected>NodeJs</option>
-							<% } else { -%>
-								<option value='node'>NodeJs</option>
-							<% } -%>
-							<% if (article.category == 'note') { -%>
-								<option value='note' selected>每日笔记</option>
-							<% } else { -%>
-								<option value='note'>每日笔记</option>
+								<option value='ask'>问答</option>
 							<% } -%>
 						</select>
 					</div>

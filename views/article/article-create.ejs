@@ -23,9 +23,13 @@
 					<div class='form-group col-lg-6'>
 						<label >分类</label>
 						<select class='form-control' name='category'>
-							<option value='front'>前端开发</option>
-							<option value='node'>NodeJs</option>
-							<option value='note'>每日笔记</option>
+							<% if (user.group == 'admin') { -%>
+								<option value='czlife'>czlife</option>
+								<option value='ask'>问答</option>
+								<option value='note'>个人笔记</option>
+							<% } else { -%>
+								<option value='ask'>问答</option>
+							<% } -%>
 						</select>
 					</div>
 					<div class='form-group col-lg-6'>

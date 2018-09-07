@@ -72,6 +72,10 @@ module.exports.AuthorOperation = {
 		return authorModel.update({_id: userId}, {$set: user}).exec()
 	},
 
+	addUserScore: (userId, n) => {
+		return authorModel.update({_id: userId}, {$inc: {score: n}}).exec()
+	},
+
 	deleteUserByUserId: (userId) => {
 		return authorModel.remove({_id: userId}).exec()
 	} 

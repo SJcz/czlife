@@ -81,7 +81,7 @@ router.post('/modifyUserInfo', checkLogin, function (req, res, next) {
 			req.session.user = result
 		}
 		req.flash('success', '用户信息更新成功')
-		res.end('用户信息更新成功...')
+		res.status(200).end('用户信息更新成功')
 	})
 	.catch(next)
 })
@@ -107,7 +107,7 @@ router.post('/changePassword', checkLogin, function (req, res, next) {
 		return AuthorOperation.updateUserInfoByUserId(fields.userId, user)
 	}).then(() => {
 		req.flash('success', '密码修改成功')
-		res.end('密码修改成功...')
+		res.status(200).end('密码修改成功')
 	}).catch(next)
 })
 
@@ -126,7 +126,7 @@ router.post('/savePageStyle', checkLogin, function (req, res, next) {
 
 	StyleOperation.updateStyle(fields.userId, style).then(() => {
 		req.flash('success', '保存用户样式成功')
-		res.end('保存用户样式成功')
+		res.status(200).end()
 	}).catch(next)
 })
 
@@ -140,7 +140,7 @@ router.get('/deleteUser', checkLogin, function (req, res, next) {
 	AuthorOperation.deleteUserByUserId(userId)
 	.then(() => {
 		req.flash('success', '用户删除成功')
-		res.end()
+		res.status(200).end()
 	}).catch(next)
 })
 

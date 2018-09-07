@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express.Router()
+const config = require('config-lite')(__dirname)
 
 const ArticleOperation = require('../../model/article').ArticleOperation
 const CommentOperation = require('../../model/comment').CommentOperation
 const checkLogin = require('../../middleware/checkLoginStatus').checkLogin
 const getHotArticle = require('../../middleware/getLeaderInfo').getHotArticle
 const getRecommendArticle = require('../../middleware/getLeaderInfo').getRecommendArticle
+const AuthorOperation = require('../../model/author').AuthorOperation
 
 
 //对于请求中发生的异常， 我们到底是返回400的状态码还是定向到404页面， 这些是根据
@@ -27,10 +29,15 @@ router.post('/create', checkLogin, function (req, res, next) {
 		visibility: fields.visibility == 'true' ? true : false 
 	}
 
-	ArticleOperation.createArticle(article).then((result) => {
+	Promise.all([
+		AuthorOperation.addUserScore(req.session.user._id, config.articleScore),
+		ArticleOperation.createArticle(article)
+	])
+	.then((result) => {
 		req.flash('success', '发表文章成功')
-		res.end(JSON.stringify(result.ops[0]))
-	}).catch(next)
+		res.status(200).type('json').end(JSON.stringify(result[1].ops[0]))
+	})
+	.catch(next)
 })
 
 router.get('/delete', checkLogin, function (req, res, next) {
@@ -46,7 +53,7 @@ router.get('/delete', checkLogin, function (req, res, next) {
 			CommentOperation.deleteCommentByArticle(articleId)
 		]).then(() => {
 			req.flash('success', '文章删除成功...')
-			res.end('文章删除成功...')
+			res.status(200).end('文章删除成功...')
 		})
 	}).catch(next)
 })
@@ -72,7 +79,7 @@ router.post('/modify', checkLogin, function (req, res, next) {
 			throw new Error('更新数据失败, 找不到该文章')
 		}
 		req.flash('success', '文章修改成功')
-		res.end(fields.articleId)
+		res.status(200).end(fields.articleId)
 	}).catch(next)
 })
 

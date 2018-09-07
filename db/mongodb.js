@@ -5,7 +5,7 @@ const config = require('config-lite')(__dirname)
 const moment = require('moment')
 const objectIdToTimestamp = require('objectid-to-timestamp')
 
-mongolass.connect(config.mongodb)
+mongolass.connect(config.mongodb, { useNewUrlParser: true })
 
 mongolass.plugin('addCreatedAt', {
 	afterFind: function (result) {

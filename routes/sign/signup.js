@@ -41,7 +41,7 @@ router.post('/', checkNotLogin, (req, res, next) => {
 		result.ops[0].created_at = moment(objectIdToTimestamp(result.ops[0]._id)).format('YYYY-MM-DD HH:mm')
 		req.session.user = result.ops[0]
 		req.flash('success', '注册成功')
-		res.end()
+		res.status(200).end()
 	}).catch(next)
 })
 

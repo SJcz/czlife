@@ -3,12 +3,12 @@
 		<h3><%- article.title %></h3>
 		<ul class='czlife-article-basic-info'>
 			<li><span >&nbsp;•&nbsp;</span><a href='#'><%- article.author.nickname %></a></li>
-			<% if (article.category == 'front') { -%>
-				<li><span >&nbsp;•&nbsp;</span><a href='#'>前端开发</a></li>
-			<% } else if (article.category == 'node') { -%>
-				<li><span >&nbsp;•&nbsp;</span><a href='#'>NodeJs</a></li>
+			<% if (article.category == 'czlife') { -%>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>czlife</a></li>
+			<% } else if (article.category == 'ask') { -%>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>问答</a></li>
 			<% } else { %>
-				<li><span >&nbsp;•&nbsp;</span><a href='#'>每日笔记</a></li>
+				<li><span >&nbsp;•&nbsp;</span><a href='#'>个人笔记</a></li>
 			<% } -%>
 			<li><span >&nbsp;•&nbsp;</span><%- article.created_at %></li>
 			<li><span >&nbsp;•&nbsp;</span>阅读量&nbsp;&nbsp;<%- article.bt %></li>

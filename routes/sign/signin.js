@@ -28,7 +28,7 @@ router.post('/', checkNotLogin, function (req, res, next) {
 		} else {
 			//res.clearCookie('loginHelp')
 		}
-		res.end()
+		res.status(200).end()
 	}).catch(next)
 })
 

@@ -12,6 +12,9 @@ $(document).ready(() => {
 		$('#sub-comment-form-div').css('display', 'none')
 	})
 
+	//刷新之后，清楚评论框内容
+	$('#comment-create-form textarea[name="comment_content"]').val('')
+
 
 
 	$('#comment-create-form').bootstrapValidator({

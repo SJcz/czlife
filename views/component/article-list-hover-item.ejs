@@ -14,12 +14,12 @@
 		</span>
 	</div>
 	<div class='czlife-height-40-line-3 czlife-padding-left-10 czlife-overflow-pot'>
-		<% if (article.category == 'front') { -%>
-			<span class="label label-primary czlife-span">前端开发</span>
-		<% } else if (article.category == 'node') { -%>
-			<span class="label label-info czlife-span">NodeJS</span>
+		<% if (article.category == 'czlife') { -%>
+			<span class="label label-primary czlife-span">czlife</span>
+		<% } else if (article.category == 'ask') { -%>
+			<span class="label label-info czlife-span">问答</span>
 		<% } else { %>
-			<span class="label label-success czlife-span">每日笔记</span>
+			<span class="label label-success czlife-span">个人笔记</span>
 		<% } -%>
 		<a href='/article/<%- article._id %>'><span><%- article.title %></span></a>
 	</div>

@@ -27,7 +27,7 @@ router.get('/getAllUser', function (req, res, next) {
 
 	AuthorOperation.getAllUser().then((result) => {
 		result = sortData (result, sort)
-		res.end(JSON.stringify(result))
+		res.status(200).type('json').end(JSON.stringify(result))
 	}).catch((err) => {
 		console.log(err.message)
 		res.status(400).end('得到表格信息异常...')
@@ -54,7 +54,7 @@ router.get('/getChartData', function (req, res, next) {
 		//得到最近7天访问量
 		VisitCountOperation.getVisitCount(7)
 		.then((result) => {
-			return res.end(JSON.stringify(result))
+			return res.status(200).type('json').end(JSON.stringify(result))
 		}).catch((err) => {
 			console.log(err.message)
 			res.status(400).end('得到访问量失败')
@@ -64,7 +64,7 @@ router.get('/getChartData', function (req, res, next) {
 		.then((result) => {
 			var returnValue = getCountGroupByDate(result)
 			
-			return res.end(JSON.stringify(returnValue))
+			return res.status(200).type('json').end(JSON.stringify(returnValue))
 		}).catch((err) => {
 			console.log(err.message)
 			res.status(400).end('得到文章量失败')
@@ -74,7 +74,7 @@ router.get('/getChartData', function (req, res, next) {
 		.then((result) => {
 			var returnValue = getCountGroupByDate(result)
 			
-			return res.end(JSON.stringify(returnValue))
+			return res.status(200).type('json').end(JSON.stringify(returnValue))
 		}).catch((err) => {
 			console.log(err.message)
 			res.status(400).end('得到评论量失败')
