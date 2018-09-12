@@ -47,8 +47,8 @@ $(document).ready(() => {
 			window.location.href = '/article/' + articleId
 		})
 		.fail((err) => {
-			$('#article-modal .modal-body').text(err.responseText)
-			$('#article-modal').modal('show')
+			$('#simple-prompt-modal .modal-body').text(err.responseText)
+			$('#simple-prompt-modal').modal('show')
 		})
 	}
 })

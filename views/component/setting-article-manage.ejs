@@ -1,8 +1,14 @@
 <div>
-	<h3 class='page-header czlife-margin-bottom-20'>已发布文章</h3>
+	<h3 class='page-header czlife-margin-bottom-20'>已发布文章(所有人可见)</h3>
 			<ul class='list-group'>
 				<% for (var i = 0; i < publishedArticleList.length; i++) { -%>
 					<%- include('./article-list-hover-item', {article: publishedArticleList[i]}) %>
+				<% } -%>
+			</ul>
+	<h3 class='page-header czlife-margin-bottom-20'>私密文章(仅自己可见)</h3>
+			<ul class='list-group'>
+				<% for (var i = 0; i < privateArticleList.length; i++) { -%>
+					<%- include('./article-list-hover-item', {article: privateArticleList[i]}) %>
 				<% } -%>
 			</ul>
 	<h3 class='page-header czlife-margin-bottom-20'>参与文章</h3>

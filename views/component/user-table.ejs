@@ -14,7 +14,19 @@
 				<td><%- allAuthors[i].score %></td>
 				<td><%- allAuthors[i].articleCount %></td>
 				<td><%- allAuthors[i].commentCount %></td>
-				<td><a href="javascript: showDeleteModal2('<%- allAuthors[i]._id %>')">删除</a></td>
+				<td><a href="javascript: showConfirmModal('<%- allAuthors[i]._id %>', 101)">删除</a></td>
+				<% if (allAuthors[i].status1 == 1) { -%>
+					<td><span style='color:red'>已被禁言<span> 
+						<a href="javascript: showConfirmModal('<%- allAuthors[i]._id %>', 104)">解除禁言</a></td>
+				<% } else { -%>
+					<td><a href="javascript: showConfirmModal('<%- allAuthors[i]._id %>', 102)">禁言</a></td>
+				<% } -%>
+				<% if (allAuthors[i].status2 == 1) { -%>
+					<td><span style='color:red'>已被禁文</span>
+						<a href="javascript: showConfirmModal('<%- allAuthors[i]._id %>', 105)">解除禁文</a></td>
+				<% } else { -%>
+					<td><a href="javascript: showConfirmModal('<%- allAuthors[i]._id %>', 103)">禁止发文</a></td>
+				<% } -%>
 			</tr>
 		<% } -%>
 	</table>

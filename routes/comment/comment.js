@@ -7,6 +7,11 @@ const checkLogin = require('../../middleware/checkLoginStatus').checkLogin
 const AuthorOperation = require('../../model/author').AuthorOperation
 
 router.post('/create', checkLogin, function (req, res, next) {
+	//status1 表示禁言状态
+	if (req.session.user.status1 == 1) {
+		return next(new Error('由于违规, 你已被禁言'))
+	}
+
 	var fields = req.fields
 
 	var comment = {

@@ -10,9 +10,9 @@
 			所有文章
 		<% } %>
 	</div>
-	<ul class='list-group'>
+	<ul class='media-list czlife-margin-top-20 '>
         <% articleList.forEach((article) => { %>
-            <%- include('./article-list-item', {article: article}) %>
+            <%- include('./article-list-item-index', {article: article}) %>
         <% }) -%> 
 	</ul>
 	<nav aria-label='Page navigation' class='czlife-page-area'>

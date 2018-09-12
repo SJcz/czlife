@@ -10,8 +10,11 @@
 			<% } else { %>
 				<li><span >&nbsp;•&nbsp;</span><a href='#'>个人笔记</a></li>
 			<% } -%>
+			<!--
 			<li><span >&nbsp;•&nbsp;</span><%- article.created_at %></li>
+		-->
 			<li><span >&nbsp;•&nbsp;</span>阅读量&nbsp;&nbsp;<%- article.bt %></li>
+			<li><span >&nbsp;•&nbsp;</span>最后修改于&nbsp;&nbsp;<%- article.lastModify %></li>
 		</ul>
 		<p><%- article.content %></p>
 	</div>

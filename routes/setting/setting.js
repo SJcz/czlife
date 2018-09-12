@@ -130,8 +130,8 @@ router.post('/savePageStyle', checkLogin, function (req, res, next) {
 	}).catch(next)
 })
 
-router.get('/deleteUser', checkLogin, function (req, res, next) {
-	var userId = req.query.userId
+router.post('/deleteUser', checkLogin, function (req, res, next) {
+	var userId = req.fields.userId
 
 	if (req.session.user.group != 'admin') {
 		return next(new Error('权限不足'))
@@ -142,6 +142,26 @@ router.get('/deleteUser', checkLogin, function (req, res, next) {
 		req.flash('success', '用户删除成功')
 		res.status(200).end()
 	}).catch(next)
+})
+
+router.post('/changeUserStatus', checkLogin, function (req, res, next) {
+	var userId = req.fields.userId
+
+	if (req.session.user.group != 'admin') {
+		return next(new Error('权限不足'))
+	}
+	
+	delete req.fields.userId
+
+	for (var k in req.fields) {
+		req.fields[k] = parseInt(req.fields[k])
+	}
+
+	AuthorOperation.updateUserInfoByUserId(userId, req.fields)
+	.then(() => {
+		res.status(200).end()
+	})
+	.catch(next)
 })
 
 router.get('/:userId', checkLogin, function (req, res, next) {
@@ -182,14 +202,16 @@ router.get('/:userId', checkLogin, function (req, res, next) {
 
 			return Promise.all([
 				ArticleOperation.getArticleByUserId(userId),
-				ArticleOperation.getArticleByArticleIds(articleIds)
+				ArticleOperation.getArticleByArticleIds(articleIds),
+				ArticleOperation.getPrivateArticleByUserId(userId)
 			])
 		}).then((result) => {
 			res.render('setting/user-setting', {
 				errorMessage: '', 
 				setting_tab: tab, 
 				publishedArticleList: result[0],
-				commentedArticleList: result[1]
+				commentedArticleList: result[1],
+				privateArticleList: result[2]
 			})
 		}).catch(next)
 	} else if (tab == 'uiManage') {

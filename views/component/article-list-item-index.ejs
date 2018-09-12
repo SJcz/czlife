@@ -1,0 +1,33 @@
+<li class="media czlife-border-bottom">
+	<div class='media-left'>
+		<a>
+			<img class="media-object" style="height: 150px;width: 230px;border-radius: 3px;"
+			src="<%- '/images/' + (parseInt(Math.random()*30) + 1) + '.jpg' %>">
+		</a>
+	</div>
+	<div class='media-body' style='position: relative'>
+		<h4>
+			<% if (article.category == 'czlife') { -%>
+				<span class="label label-primary czlife-span">czlife</span>
+			<% } else if (article.category == 'ask') { -%>
+				<span class="label label-info czlife-span">问答</span>
+			<% } else { %>
+				<span class="label label-success czlife-span">个人笔记</span>
+			<% } -%>
+			<a href='/article/<%- article._id %>'s><%- article.title %></a>
+		</h4>
+		<div style='color:#999;'>
+			<% if (article.abbContent.length > 100) { -%>
+				<%- article.abbContent.substr(0, 100) + '...' %>
+			<% } else { -%>
+				<%- article.abbContent %>
+			<% } -%>
+		</div>
+		<div style='color: #999;position: absolute;bottom: 5px;font-size: small;'>
+			<span><%- article.author.nickname %></span>&nbsp;&nbsp;
+			<span><i class='glyphicon glyphicon-dashboard'></i>&nbsp;<%- article.created_at %></span>&nbsp;
+			<span><i class='glyphicon glyphicon-eye-open'></i>&nbsp;<%- article.bt %></span>&nbsp;
+			<span><i class='glyphicon glyphicon-comment'></i>&nbsp;<%- article.commentCount %></span>
+		</div>
+	</div>
+</li>

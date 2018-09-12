@@ -9,6 +9,7 @@
   "author": "chizhen",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "config-lite": "^2.1.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
@@ -16,6 +17,7 @@
     "express": "^4.16.3",
     "express-formidable": "^1.0.0",
     "express-session": "^1.15.6",
+    "jquery": "^3.3.1",
     "log4js": "^3.0.5",
     "marked": "^0.4.0",
     "moment": "^2.22.2",

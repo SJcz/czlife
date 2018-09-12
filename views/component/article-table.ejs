@@ -4,6 +4,7 @@
 		<tr class='czlife-no-top-border'>
 			<th>用户名</th>
 			<th>文章名</th>
+			<th>可见性</th>
 			<th>浏览次数</th>
 			<th>评论数</th>
 			<th>操作</th>
@@ -12,9 +13,14 @@
 			<tr>
 				<td><%- allArticles[i].author.name %></td>
 				<td><a href='/article/<%- allArticles[i]._id %>'><%- allArticles[i].title %></a></td>
+				<% if (allArticles[i].visibility) { -%>
+					<td>所有人可见</td>
+				<% } else { -%>
+					<td style='color: red'>仅自己可见</td>
+				<% } -%>
 				<td><%- allArticles[i].bt %></td>
 				<td><%- allArticles[i].commentCount %></td>
-				<td><a href="javascript: showDeleteModal('<%- allArticles[i]._id %>')">删除</a></td>
+				<td><a href="javascript: showConfirmModal('<%- allArticles[i]._id %>', 201)">删除</a></td>
 			</tr>
 		<% } -%>
 	</table>

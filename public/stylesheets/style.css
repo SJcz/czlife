@@ -103,6 +103,10 @@ text-overflow 属性规定当文本溢出包含元素时发生的事情。ellips
 	margin: 0px 0px 20px 0px;
 }
 
+.czlife-margin-top-20 {
+	margin: 20px 0px 0px 0px;
+}
+
 .czlife-margin-20 {
 	margin: 20px;
 }
@@ -159,7 +163,7 @@ text-overflow 属性规定当文本溢出包含元素时发生的事情。ellips
 
 .czlife-span {
 	font-size: 12px;
-	padding: 3px;
+    padding: 3px;
 }
 
 .czlife-footer {
@@ -187,6 +191,11 @@ text-overflow 属性规定当文本溢出包含元素时发生的事情。ellips
 	border: 0px !important;
 }
 
+/*删除主页文章列表面板的border*/
+.czlife-no-border {
+	border: 0px;
+}
+
 .czlife-no-top-border th {
 	border: 0px !important;
 }
@@ -204,6 +213,12 @@ text-overflow 属性规定当文本溢出包含元素时发生的事情。ellips
 /*用户排行那里 按照积分 文章 评论排行的导航栏应该在右侧*/
 .czlife-right-ul li {
 	float: right;
+}
+
+/*首页文章列表的每一个列表下面都有一条虚化线划分*/
+.czlife-border-bottom {
+	padding: 15px;
+    border-bottom: 1px solid #ddd;
 }
 
 

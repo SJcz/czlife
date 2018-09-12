@@ -56,8 +56,8 @@ $(document).ready(() => {
 		if ($('#article-create-form').data('bootstrapValidator').isValid()) {
 			//手动对content进行验证， 因为summernote的存在,导致这里的验证结果表现不如人意
 			if (!$($('textarea[name="content"]').val()).text()) {
-				$('#article-modal .modal-body').text('亲, 文章内容可不能为空呢...')
-				$('#article-modal').modal('show')
+				$('#simple-prompt-modal .modal-body').text('亲, 文章内容可不能为空呢...')
+				$('#simple-prompt-modal').modal('show')
 			} else {
 				createArticle_sendRequest()
 			}
@@ -71,8 +71,8 @@ $(document).ready(() => {
 			window.location.href = '/article/' + result._id
 		})
 		.fail((err) => {
-			$('#article-modal .modal-body').text(err.responseText)
-			$('#article-modal').modal('show')
+			$('#simple-prompt-modal .modal-body').text(err.responseText)
+			$('#simple-prompt-modal').modal('show')
 		})
 	}
 })

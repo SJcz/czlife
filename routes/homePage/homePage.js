@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const config = require('config-lite')(__dirname)
+const cheerio = require('cheerio')
 
 const pageNumber = config.pageNumber
 
@@ -56,8 +57,7 @@ router.get('/index', addVisitCount, getHotArticle, getRecommendArticle, function
 	Promise.all([
 		ArticleOperation.getPageArticle(category, index, pageNumber),
 		ArticleOperation.getArticleByCategory(category)
-	]).then((result) => {
-		
+	]).then((result) => {	
 		var maxNumber = parseInt(result[1].length / pageNumber)
 		if (result[1].length % pageNumber > 0) {
 			maxNumber += 1

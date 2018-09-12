@@ -19,6 +19,8 @@ router.post('/', checkNotLogin, (req, res, next) => {
 		avatar = 'default/tom.jpg'
 	} else if (fields.gender == 'w') {
 		avatar = 'default/nan.jpg'
+	} else {
+		avatar = 'default/et.jpg'
 	}
 
 	var user = {

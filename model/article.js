@@ -1,8 +1,14 @@
 const articleModel = require('../db/mongodb').articleModel
-const marked = require('marked')
+//const marked = require('marked')
+
+//用来提取文章内容的具体文本信息, 因为存到数据库的是html字符串, 
+//在首页文章缩略图中, 我们要做文章内容缩略显示, 没法用substr
+//
+const cheerio = require('cheerio') 
 
 const CommentOperation = require('./comment').CommentOperation
 
+/*
 articleModel.plugin('contentToHtml', {
 	afterFind: (result) => {
 		result.forEach((article) => {
@@ -13,6 +19,23 @@ articleModel.plugin('contentToHtml', {
 	afterFindOne: (article) => {
 		if (article) {
 			article.content = marked(article.content)
+		}
+		return article
+	}
+})
+*/
+
+//得到文章缩略内容, 在首页显示
+articleModel.plugin('getAbbContent', {
+	afterFind: (result) => {
+		result.forEach((item) => {
+			item.abbContent = cheerio.load(item.content).text()
+		})
+		return result
+	},
+	afterFindOne: (article) => {
+		if (article) {
+			article.abbContent = cheerio.load(article.content).text()
 		}
 		return article
 	}
@@ -77,11 +100,12 @@ module.exports.ArticleOperation = {
 		.skip((index - 1) * pageNumber)
 		.addCreatedAt()
 		.getCommentCount()
+		.getAbbContent()
 		.exec()
 	},
 
 	getAllArticle: () => {
-		return articleModel.find({visibility: true})
+		return articleModel.find()
 		.populate({path: 'author', model: 'author'})
 		.sort({_id: -1})
 		.getCommentCount()
@@ -95,7 +119,16 @@ module.exports.ArticleOperation = {
 	}, 
 
 	getArticleByUserId: (userId) => {
-		return articleModel.find({author: userId})
+		return articleModel.find({visibility: true, author: userId})
+		.populate({path: 'author', model: 'author'})
+		.sort({_id: -1})
+		.addCreatedAt()
+		.getCommentCount()
+		.exec()
+	},
+
+	getPrivateArticleByUserId: (userId) => {
+		return articleModel.find({visibility: false, author: userId})
 		.populate({path: 'author', model: 'author'})
 		.sort({_id: -1})
 		.addCreatedAt()

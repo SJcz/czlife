@@ -56,15 +56,14 @@ $(document).ready(() => {
 	})
 
 	function signin_sendRequest () {
-		
 		$.post('/signin', $('#signin-form').serialize())
 		.done((result) => {
 			//console.log(result)
 			window.location.href = '/index'
 		})
 		.fail((err) => {
-			$('#sign-modal .modal-body').text(err.responseText)
-			$('#sign-modal').modal('show')
+			$('#simple-prompt-modal .modal-body').text(err.responseText)
+			$('#simple-prompt-modal').modal('show')
 		})
 	}
 })

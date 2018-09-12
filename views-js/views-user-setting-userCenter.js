@@ -35,8 +35,8 @@ $(document).ready(() => {
         })
         .catch((err) => {
             console.log(err)
-            $('#setting-modal .modal-body').text(err.responseText)
-            $('#setting-modal').modal('show')
+            $('#simple-prompt-modal .modal-body').text(err.responseText)
+            $('#simple-prompt-modal').modal('show')
         })
     }
 
@@ -51,8 +51,8 @@ $(document).ready(() => {
         })
         .catch((err) => {
             console.log(err)
-            $('#setting-modal .modal-body').text(err.responseText)
-            $('#setting-modal').modal('show')
+            $('#simple-prompt-modal .modal-body').text(err.responseText)
+            $('#simple-prompt-modal').modal('show')
         })
     }
 

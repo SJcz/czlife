@@ -1,4 +1,4 @@
-module.exports = {
+﻿module.exports = {
 	port: 8080,
 	hostname: '0.0.0.0',
 	mongodb: 'mongodb://localhost:27017/czlife',

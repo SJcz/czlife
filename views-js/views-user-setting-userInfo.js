@@ -71,8 +71,8 @@ $(document).ready(function () {
         }).fail(function(err){
         	console.log(1111111111)
         	console.log(err)
-            $('#setting-modal .modal-body').text(err.responseText)
-			$('#setting-modal').modal('show')
+            $('#simple-prompt-modal .modal-body').text(err.responseText)
+			$('#simple-prompt-modal').modal('show')
         })
 	} 
 })

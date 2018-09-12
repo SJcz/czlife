@@ -30,7 +30,9 @@ const authorSchema = new Schema('authorSchema', {
 	avatar: {type: 'string', required: true},
 	group: {type: 'string', default: 'normal'},
 	bio: {type: 'string'},
-	score: {type: 'number', default: 0}
+	score: {type: 'number', default: 0},
+	status1: {type: 'number', default: 0}, //用户禁言状态, 1为禁言 0为正常
+	status2: {type: 'number', default: 0}, //用户禁文状态, 1为禁文 0为正常
 })
 
 const authorModel = mongolass.model('author', authorSchema)
@@ -42,7 +44,7 @@ const articleSchema = new Schema('articleSchema', {
 	author: {type: Schema.Types.ObjectId, required: true, index: true},
 	visibility: {type: 'boolean', default: true},
 	bt: {type: 'number', default: 0},
-	
+	lastModify: {type: Schema.Types.Date}
 })
 
 const articleModel = mongolass.model('article', articleSchema)

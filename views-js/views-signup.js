@@ -85,8 +85,8 @@ $(document).ready(function () {
 			window.location.href = '/index'
 		})
 		.fail((err) => {
-			$('#sign-modal .modal-body').text(err.responseText)
-			$('#sign-modal').modal('show')
+			$('#simple-prompt-modal .modal-body').text(err.responseText)
+			$('#simple-prompt-modal').modal('show')
 		})
 	} 
 })

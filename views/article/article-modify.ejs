@@ -4,7 +4,7 @@
 
 <%- include('../component/page-notice') %>
 
-<%- include('../component/modal-article') %>
+<%- include('../component/modal-simple-prompt') %>
 
 <div class='container'>
 	<div class='row'>
@@ -49,15 +49,15 @@
 					<div class='form-group col-lg-6'>
 						<label>可见性</label>
 						<select class='form-control' name='visibility'>
-							<% if (article.visibility == 'true') { -%>
+							<% if (article.visibility == true) { -%>
 								<option value='true' selected>所有人可见</option>
 							<% } else { -%>
 								<option value='true'>所有人可见</option>
 							<% } -%>
-							<% if (article.visibility == 'false') { -%>
-								<option valie='false' selected>仅自己可见</option>
+							<% if (article.visibility == false) { -%>
+								<option value='false' selected>仅自己可见</option>
 							<% } else { -%>
-								<option valie='false'>仅自己可见</option>
+								<option value='false'>仅自己可见</option>
 							<% } -%>
 						</select>
 					</div>

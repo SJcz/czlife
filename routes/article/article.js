@@ -1,4 +1,5 @@
 const express = require('express')
+const moment = require('moment')
 const router = express.Router()
 const config = require('config-lite')(__dirname)
 
@@ -15,10 +16,19 @@ const AuthorOperation = require('../../model/author').AuthorOperation
 //如果不是ajax请求， 直接定向到404页面即可
 
 router.get('/create', checkLogin, getHotArticle, getRecommendArticle, function (req, res, next) {
+	//status2 表示禁文状态
+	if (req.session.user.status2 == 1) {
+		req.flash('error', '由于违规, 你已被禁止发布文章')
+		return res.redirect('/index')
+	}
 	res.render('article/article-create')
 })
 
 router.post('/create', checkLogin, function (req, res, next) {
+	//status2 表示禁文状态
+	if (req.session.user.status2 == 1) {
+		return next(new Error('由于违规, 你已被禁止发布文章'))
+	}
 	var fields = req.fields
 
 	var article = {
@@ -26,7 +36,8 @@ router.post('/create', checkLogin, function (req, res, next) {
 		content: fields.content,
 		category: fields.category,
 		author: req.session.user._id,
-		visibility: fields.visibility == 'true' ? true : false 
+		visibility: fields.visibility == 'true' ? true : false,
+		lastModify: Date.now()
 	}
 
 	Promise.all([
@@ -40,8 +51,8 @@ router.post('/create', checkLogin, function (req, res, next) {
 	.catch(next)
 })
 
-router.get('/delete', checkLogin, function (req, res, next) {
-	var articleId = req.query.articleId
+router.post('/delete', checkLogin, function (req, res, next) {
+	var articleId = req.fields.articleId
 
 	ArticleOperation.getArticleByArticleId(articleId)
 	.then((article) => {
@@ -70,7 +81,8 @@ router.post('/modify', checkLogin, function (req, res, next) {
 		title: fields.title,
 		content: fields.content,
 		category: fields.category,
-		visibility: fields.visibility == 'true'? true : false
+		visibility: fields.visibility == 'true'? true : false,
+		lastModify: Date.now()
 	}
 
 	ArticleOperation.updateArticleByArticleId(fields.articleId, article)
@@ -112,8 +124,36 @@ router.get('/search', getHotArticle, getRecommendArticle, function (req, res, ne
 })
 
 router.get('/:articleId', getHotArticle, getRecommendArticle, function (req, res, next) {
-	let articleId = req.params.articleId
+	var articleId = req.params.articleId
 
+	//私密文章除了作者之外, 其他人无法访问, 至于管理员行不行....我最大, 我可以
+	ArticleOperation.getArticleByArticleId(articleId)
+	.then((article) => {
+		//console.log(req.session.user._id, article.author)
+		if (article) {
+			if (article.visibility == false) {
+				if (req.session.user && (req.session.user.group == 'admin' || req.session.user._id == article.author._id)) {
+					return article
+				} else {
+					throw new Error('抱歉, 你无权限访问这篇文章...')
+				}
+			} else {
+				return article
+			}
+		} else {
+			throw new Error('抱歉, 你访问的文章不存在...')
+		}
+	}).then((article) => {
+		article.lastModify = moment(article.lastModify).format('YYYY-MM-DD HH:mm:ss') //格式化时间
+		return Promise.all([
+			ArticleOperation.addArticleBT(articleId),
+			CommentOperation.getCommentByArticle(articleId)
+		]).then((result) => {
+			return res.render('article/article-detail', {article: article, commentList: result[1]})
+		})	
+	}).catch(next)
+
+	/*
 	Promise.all([
 		ArticleOperation.getArticleByArticleId(articleId),
 		ArticleOperation.addArticleBT(articleId),
@@ -124,6 +164,7 @@ router.get('/:articleId', getHotArticle, getRecommendArticle, function (req, res
 		}
 		throw new Error('抱歉， 你访问的文章不存在...')
 	}).catch(next)
+	*/
 })
 
 module.exports = router
